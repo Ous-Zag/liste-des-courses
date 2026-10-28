@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-28T13:34:12.364Z",
+ "updatedAt": "2026-10-28T13:34:14.190Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -2626,7 +2626,7 @@
    "id": "ia-28",
    "ingredientId": "ing-28",
    "qty": 600,
-   "checked": false
+   "checked": true
   },
   {
    "id": "ia-29",
