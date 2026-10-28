@@ -4,7 +4,7 @@
 const $ = (s, el = document) => el.querySelector(s);
 const view = $("#view");
 let D = null; // données courantes (copie du fichier JSON)
-const ui = { catTab: "ingredients", catQuery: "", dishQuery: "", showHidden: false };
+const ui = { catTab: "ingredients", catQuery: "", dishQuery: "", showHidden: false, buyMode: "sel", buyQuery: "" };
 
 // ---------- Couleurs et libellés ----------
 const CAT_ORDER = ["Viandes, poissons et œufs", "Légumes et herbes", "Fruits", "Féculents, pâtes et légumes secs", "Huiles, condiments et épices", "Boissons", "Autres", "Hygiène corporelle", "Entretien de la maison"];
@@ -125,61 +125,99 @@ function render() {
 }
 window.addEventListener("hashchange", () => { render(); view.focus({ preventScroll: true }); window.scrollTo(0, 0); });
 
-// ================= Vue 1 : liste de courses (US-10) =================
-const GROUPS = [["ingredientsToBuy", "Ingrédients"], ["dairyToBuy", "Produits laitiers"], ["hygieneToBuy", "Hygiène et entretien"]];
-function shopItem(col, line, info) {
-  const it = info.item;
-  return `<li class="item" style="--c:${info.color}"><label style="display:contents"><input type="checkbox" data-shop="${col}" data-id="${line.id}" ${line.checked ? "checked" : ""} aria-label="${esc(it.name)}"><span class="box">${check}</span>
-  <span><span class="name">${esc(it.name)}</span>${it.ar ? `<span class="ar">${esc(it.ar)}</span>` : ""}</span>
-  <span class="qty"><b>${esc(fmtQty(line.qty, it.unit))}</b><em>${money(info.cost)}</em></span></label></li>`;
-}
-function renderCourses() {
-  let todoHtml = "", doneHtml = "", n = 0, nDone = 0, total = 0, spent = 0;
-  for (const [col, label] of GROUPS) {
-    const lines = D[col].map((l) => ({ l, info: lineInfo(col, l) })).filter((x) => x.info && x.l.qty > 0);
-    lines.forEach(({ l, info }) => { n++; total += info.cost || 0; if (l.checked) { nDone++; spent += info.cost || 0; } });
-    const todo = lines.filter((x) => !x.l.checked), done = lines.filter((x) => x.l.checked);
-    if (todo.length) {
-      if (col === "ingredientsToBuy") {
-        const cats = [...new Set(todo.map((x) => x.info.item.category || "Autres"))].sort(catSort);
-        todoHtml += `<section class="card grp"><div class="card-head"><h2>${label}</h2><span class="count">${todo.length}</span></div>` +
-          cats.map((c) => `<div class="grp" style="--c:${colorOf(c)}"><h3><span class="dot"></span>${esc(c)}</h3><ul class="rows shop">${todo.filter((x) => (x.info.item.category || "Autres") === c).map((x) => shopItem(col, x.l, x.info)).join("")}</ul></div>`).join("") + `</section>`;
-      } else {
-        todoHtml += `<section class="card grp" style="--c:${col === "dairyToBuy" ? DAIRY_COLOR : "#00A6D6"}"><div class="card-head"><h2>${label}</h2><span class="count">${todo.length}</span></div><ul class="rows shop">${todo.map((x) => shopItem(col, x.l, x.info)).join("")}</ul></section>`;
-      }
-    }
-    if (done.length) doneHtml += `<div class="grp"><p class="meta">${label}</p><ul class="rows shop">${done.map((x) => shopItem(col, x.l, x.info)).join("")}</ul></div>`;
-  }
-  if (!n) todoHtml = `<section class="card"><p class="empty">La liste de courses est vide. Générez les ingrédients depuis <a href="#planning">les plats à préparer</a>, ou ajoutez des articles dans <a href="#acheter">À acheter</a>.</p></section>`;
-  else if (!todoHtml) todoHtml = `<section class="card" style="background:var(--ok);color:#fff"><p class="empty" style="color:#fff;font-weight:700">Tout est dans le panier. Les courses sont terminées.</p></section>`;
-  return `<div class="vhead"><div><h1>Liste de courses</h1><p class="lead">Ingrédients, produits laitiers et produits d’hygiène à acheter. Cochez un article pour le mettre dans le panier.</p></div>
-    <button class="btn ghost" data-act="uncheck" ${nDone ? "" : "disabled"}>Tout décocher</button></div>
-  <div class="totals"><div class="stat hero"><small>Reste à acheter</small><b>${money(total - spent)}</b></div><div class="stat"><small>Dans le panier</small><b>${nDone} / ${n}</b></div><div class="stat"><small>Total des courses</small><b>${money(total)}</b></div></div>
-  <div class="grid2"><div>${todoHtml}</div><aside class="card basket sticky" aria-label="Dans le panier"><div class="card-head"><h2>Dans le panier</h2><span class="meta">${money(spent)}</span></div>${doneHtml || `<p class="empty" style="color:inherit;opacity:.7">Cochez un article pour le mettre ici.</p>`}</aside></div>`;
+// ---------- Catégories communes à « Courses » et « À acheter » ----------
+const DAIRY_CAT = "Produits laitiers";
+const CAT_ORDER2 = ["Viandes, poissons et œufs", "Légumes et herbes", "Fruits", DAIRY_CAT, "Féculents, pâtes et légumes secs", "Huiles, condiments et épices", "Boissons", "Autres", "Hygiène corporelle", "Entretien de la maison"];
+const catSort2 = (a, b) => { const ia = CAT_ORDER2.indexOf(a), ib = CAT_ORDER2.indexOf(b); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b, "fr"); };
+const catColor = (c) => (c === DAIRY_CAT ? DAIRY_COLOR : colorOf(c));
+const catOf = (source, item) => (source === "dairy" ? DAIRY_CAT : item.category || (source === "hygiene" ? "Hygiène" : "Autres"));
+const slug = (prefix, c) => prefix + "-" + c.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const SRC = { ingredients: { toBuy: "ingredientsToBuy", ref: "ingredientId", title: "Ingrédients" }, dairy: { toBuy: "dairyToBuy", ref: "dairyId", title: "Produits laitiers" }, hygiene: { toBuy: "hygieneToBuy", ref: "hygieneId", title: "Hygiène et entretien" } };
+function bar(pct, color) { return `<span class="pbar" style="--c:${color}"><i style="width:${Math.round(pct)}%"></i></span>`; }
+function catNav(prefix, cats) { // accès rapide : une puce par catégorie
+  return `<nav class="catnav" aria-label="Accès rapide aux catégories"><div class="catnav-in">${cats.map((c) => `<button class="catchip" style="--c:${catColor(c.name)}" data-jump="${slug(prefix, c.name)}"><i></i>${esc(c.name)}<b>${c.badge}</b></button>`).join("")}</div></nav>`;
 }
 
-// ================= Vue 2 : listes à acheter (US-07, 08, 09) =================
-function toBuyCard(col, title, catalogCol, refKey, color, extraHead = "") {
-  const lines = D[col].map((l) => ({ l, info: lineInfo(col, l) })).filter((x) => x.info);
-  const tot = sum(lines.map((x) => x.info.cost));
-  const used = new Set(D[col].map((l) => l[refKey]));
-  const avail = D[catalogCol].filter((x) => !used.has(x.id));
-  let options;
-  if (catalogCol === "ingredients") {
-    const cats = [...new Set(avail.map((x) => x.category || "Autres"))].sort(catSort);
-    options = cats.map((c) => `<optgroup label="${esc(c)}">${avail.filter((x) => (x.category || "Autres") === c).map((x) => `<option value="${x.id}">${esc(x.name)} (${esc(x.unit)})</option>`).join("")}</optgroup>`).join("");
-  } else options = avail.map((x) => `<option value="${x.id}">${esc(x.name)} (${esc(x.unit)})</option>`).join("");
-  return `<section class="card" style="--c:${color}"><div class="card-head"><h2>${title}</h2><span class="count">${lines.length}</span><div class="right"><b>${money(tot)}</b>${extraHead}</div></div>
-  ${lines.length ? `<ul class="rows">${lines.map(({ l, info }) => `<li class="row"><div class="main"><span class="name">${esc(info.item.name)}</span>${info.item.ar ? `<span class="ar">${esc(info.item.ar)}</span>` : ""}${info.item.category && catalogCol === "ingredients" ? `<span class="meta">${esc(info.item.category)}</span>` : ""}</div>
-    <div class="ctrl"><input type="number" min="0" step="any" inputmode="decimal" id="q-${l.id}" value="${l.qty}" data-qty="${col}" data-id="${l.id}" aria-label="Quantité de ${esc(info.item.name)}"><span class="unit">${esc(info.item.unit)}</span><span class="money">${money(info.cost)}</span><button class="icon-btn del" data-del="${col}" data-id="${l.id}" aria-label="Retirer ${esc(info.item.name)}">${ICON.del}</button></div></li>`).join("")}</ul>` : `<p class="empty">Aucun article pour l’instant.</p>`}
-  ${avail.length ? `<div class="addline"><select id="add-${col}" aria-label="Article à ajouter">${options}</select><input type="number" min="0" step="any" inputmode="decimal" id="addq-${col}" placeholder="Qté" aria-label="Quantité"><button class="btn primary" data-addline="${col}" data-ref="${refKey}">${ICON.plus}Ajouter</button></div>` : `<p class="meta" style="margin-top:10px">Tous les articles du catalogue sont dans la liste.</p>`}
-  </section>`;
+// ================= Vue 1 : liste de courses, générée depuis « À acheter » (US-10) =================
+function shopLines() {
+  return D.shoppingList.map((l) => { const item = byId(l.source, l.refId); return item && { l, item, cat: catOf(l.source, item), cost: cost(item.price, l.qty, item.unit) }; }).filter(Boolean);
 }
+function buySignature() {
+  const s = [];
+  for (const [source, x] of Object.entries(SRC)) for (const l of D[x.toBuy]) if (l.qty > 0 && byId(source, l[x.ref])) s.push(source + "|" + l[x.ref] + "|" + l.qty);
+  return s.sort().join(";");
+}
+const shopSignature = () => D.shoppingList.filter((l) => byId(l.source, l.refId)).map((l) => l.source + "|" + l.refId + "|" + l.qty).sort().join(";");
+function shopItem(x) {
+  const it = x.item;
+  return `<li class="item" style="--c:${catColor(x.cat)}"><label style="display:contents"><input type="checkbox" data-shop="${x.l.id}" ${x.l.checked ? "checked" : ""} aria-label="${esc(it.name)}"><span class="box">${check}</span>
+  <span><span class="name">${esc(it.name)}</span>${it.ar ? `<span class="ar">${esc(it.ar)}</span>` : ""}</span>
+  <span class="qty"><b>${esc(fmtQty(x.l.qty, it.unit))}</b><em>${money(x.cost)}</em></span></label></li>`;
+}
+function renderCourses() {
+  const lines = shopLines();
+  const stale = buySignature() !== shopSignature();
+  const head = `<div class="vhead"><div><h1>Liste de courses</h1><p class="lead">Générée à partir de « À acheter ». Cochez un article pour le mettre dans le panier.</p></div>
+    <div class="toolbar" style="margin:0"><button class="btn ghost" data-act="uncheck" ${lines.some((x) => x.l.checked) ? "" : "disabled"}>Tout décocher</button><button class="btn ${stale ? "pop" : "ghost"}" data-act="genShop">${lines.length ? "Régénérer depuis « À acheter »" : "Générer la liste de courses"}</button></div></div>`;
+  const notice = stale && lines.length ? `<div class="notice"><span>« À acheter » a changé depuis la dernière génération de la liste de courses.</span><button class="btn small" data-act="genShop">Mettre à jour la liste</button></div>` : "";
+  if (!lines.length) return head + `<section class="card"><p class="empty">La liste de courses n’a pas encore été générée. Préparez vos listes dans <a href="#acheter">À acheter</a>, puis cliquez sur « Générer la liste de courses ».</p></section>`;
+  const cats = [...new Set(lines.map((x) => x.cat))].sort(catSort2).map((name) => {
+    const all = lines.filter((x) => x.cat === name), todo = all.filter((x) => !x.l.checked);
+    const total = sum(all.map((x) => x.cost)), left = sum(todo.map((x) => x.cost));
+    return { name, all, todo, done: all.filter((x) => x.l.checked), total, left, badge: todo.length };
+  });
+  const total = sum(cats.map((c) => c.total)), left = sum(cats.map((c) => c.left)), nTodo = sum(cats.map((c) => c.todo.length));
+  const overview = `<div class="totals"><div class="stat hero"><small>Reste à acheter</small><b>${money(left)}</b></div><div class="stat"><small>Articles à acheter</small><b>${nTodo} / ${lines.length}</b></div><div class="stat"><small>Total des courses</small><b>${money(total)}</b></div></div>
+  <div class="catgrid">${cats.map((c) => `<button class="catcard" style="--c:${catColor(c.name)}" data-jump="${slug("c", c.name)}"><span class="cc-name"><i></i>${esc(c.name)}</span>
+    <span class="cc-count"><b>${c.todo.length}</b> à acheter sur ${c.all.length}</span>${bar(c.all.length ? (c.done.length / c.all.length) * 100 : 0, catColor(c.name))}
+    <span class="cc-money"><span>Reste <b>${money(c.left)}</b></span><span>Total ${money(c.total)}</span></span></button>`).join("")}</div>`;
+  const sections = cats.map((c) => `<section class="card catsec" id="${slug("c", c.name)}" style="--c:${catColor(c.name)}"><div class="card-head"><h2 class="cath"><span class="dot"></span>${esc(c.name)}</h2><span class="count">${c.todo.length} à acheter</span>
+    <div class="right meta"><span>Reste <b class="ink">${money(c.left)}</b>, total ${money(c.total)}</span></div></div>
+    ${c.todo.length ? `<ul class="rows shop">${c.todo.map(shopItem).join("")}</ul>` : `<p class="empty">Tout est dans le panier pour cette catégorie.</p>`}</section>`).join("");
+  const basket = cats.filter((c) => c.done.length).map((c) => `<div class="grp"><p class="meta">${esc(c.name)}</p><ul class="rows shop">${c.done.map(shopItem).join("")}</ul></div>`).join("");
+  return head + notice + overview + catNav("c", cats) +
+    `<div class="grid2"><div>${sections}</div><aside class="card basket sticky" aria-label="Dans le panier"><div class="card-head"><h2>Dans le panier</h2><span class="meta">${money(total - left)}</span></div>${basket || `<p class="empty" style="color:inherit;opacity:.7">Cochez un article pour le mettre ici.</p>`}</aside></div>`;
+}
+
+// ================= Vue 2 : « À acheter » (US-07, 08, 09) =================
+const defaultQty = (source, item) => (source === "ingredients" ? (item.unit === "g" ? 500 : item.unit === "ml" ? 1000 : 1) : 1);
 function renderToBuy() {
-  return `<div class="vhead"><div><h1>À acheter</h1><p class="lead">Les ingrédients viennent des plats à préparer ; vous pouvez les ajuster. Les produits laitiers et d’hygiène se choisissent directement dans leur catalogue.</p></div></div>
-  ${toBuyCard("ingredientsToBuy", "Ingrédients à acheter", "ingredients", "ingredientId", "#2BA84A", `<button class="btn pop small" data-act="generate">Générer depuis les plats</button>`)}
-  ${toBuyCard("dairyToBuy", "Produits laitiers à acheter", "dairy", "dairyId", DAIRY_COLOR)}
-  ${toBuyCard("hygieneToBuy", "Produits d’hygiène à acheter", "hygiene", "hygieneId", "#00A6D6")}`;
+  const q = ui.buyQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const match = (it) => !q || (it.name + " " + (it.ar || "") + " " + (it.category || "")).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(q);
+  const all = ui.buyMode === "all";
+  // une ligne par article : soit dans la liste, soit proposé depuis le catalogue
+  const rows = [];
+  for (const [source, x] of Object.entries(SRC)) {
+    const lines = new Map(D[x.toBuy].map((l) => [l[x.ref], l]));
+    for (const item of D[source]) {
+      const line = lines.get(item.id);
+      if (!line && !all) continue;
+      if (!match(item)) continue;
+      rows.push({ source, item, line, cat: catOf(source, item), cost: line ? cost(item.price, line.qty, item.unit) : null });
+    }
+  }
+  const cats = [...new Set(rows.map((r) => r.cat))].sort(catSort2).map((name) => {
+    const rs = rows.filter((r) => r.cat === name), sel = rs.filter((r) => r.line);
+    return { name, rows: rs, sel, total: sum(sel.map((r) => r.cost)), badge: sel.length };
+  });
+  const selAll = [];
+  for (const [source, x] of Object.entries(SRC)) for (const l of D[x.toBuy]) { const it = byId(source, l[x.ref]); if (it) selAll.push(cost(it.price, l.qty, it.unit)); }
+  const stale = buySignature() !== shopSignature();
+  const row = (r) => {
+    const id = r.line ? r.line.id : r.source + "-" + r.item.id;
+    return `<li class="pick ${r.line ? "on" : ""}" style="--c:${catColor(r.cat)}"><label class="pl"><input type="checkbox" data-pick="${r.source}" data-ref="${r.item.id}" ${r.line ? `data-line="${r.line.id}" checked` : ""} aria-label="Acheter ${esc(r.item.name)}"><span class="box">${check}</span>
+      <span class="main"><span class="name">${esc(r.item.name)}</span>${r.item.ar ? `<span class="ar">${esc(r.item.ar)}</span>` : ""}<span class="meta">${r.item.price != null ? money(r.item.price) + " / " + esc(priceUnit(r.item.unit)) : "prix non renseigné"}</span></span></label>
+      <span class="ctrl"><input type="number" min="0" step="any" inputmode="decimal" id="q-${id}" value="${r.line ? r.line.qty : defaultQty(r.source, r.item)}" ${r.line ? `data-qty="${SRC[r.source].toBuy}" data-id="${r.line.id}"` : `data-pending="1"`} aria-label="Quantité de ${esc(r.item.name)}"><span class="unit">${esc(r.item.unit)}</span><span class="money">${r.line ? money(r.cost) : ""}</span></span></li>`;
+  };
+  return `<div class="vhead"><div><h1>À acheter</h1><p class="lead">Les ingrédients sont générés depuis les plats à préparer, puis ajustables. Dans chaque catalogue, cochez ce que vous voulez acheter et réglez la quantité. La liste de courses est ensuite générée à partir d’ici.</p></div>
+    <div class="toolbar" style="margin:0"><button class="btn ghost" data-act="generate">Générer les ingrédients depuis les plats</button><button class="btn ${stale ? "pop" : "primary"}" data-act="genShop">Générer la liste de courses</button></div></div>
+  <div class="totals"><div class="stat hero"><small>Total à acheter</small><b>${money(sum(selAll))}</b></div><div class="stat"><small>Articles choisis</small><b>${selAll.length}</b></div>${stale ? `<div class="stat warn"><small>Liste de courses</small><b>à mettre à jour</b></div>` : `<div class="stat"><small>Liste de courses</small><b>à jour</b></div>`}</div>
+  <div class="toolbar"><div class="seg" role="group" aria-label="Affichage"><button data-buymode="sel" aria-pressed="${!all}">Ma sélection</button><button data-buymode="all" aria-pressed="${all}">Tout le catalogue</button></div>
+    <input class="search" type="search" id="buySearch" placeholder="Rechercher (français ou tounsi)" value="${esc(ui.buyQuery)}" aria-label="Rechercher un article"></div>
+  ${cats.length ? catNav("b", cats) : ""}
+  ${cats.length ? cats.map((c) => `<section class="card catsec" id="${slug("b", c.name)}" style="--c:${catColor(c.name)}"><div class="card-head"><h2 class="cath"><span class="dot"></span>${esc(c.name)}</h2><span class="count">${c.sel.length} à acheter</span><div class="right meta"><span>Total <b class="ink">${money(c.total)}</b></span></div></div>
+    <ul class="rows picks">${c.rows.map(row).join("")}</ul></section>`).join("")
+    : `<section class="card"><p class="empty">${all ? "Aucun article ne correspond." : "Rien n’est encore sélectionné. Passez en « Tout le catalogue » pour choisir des articles, ou générez les ingrédients depuis les plats."}</p></section>`}`;
 }
 
 // ================= Vue 3 : liste des plats (US-06) =================
@@ -309,7 +347,13 @@ view.addEventListener("change", (e) => {
   const t = e.target;
   if (t.dataset.shop) {
     const li = t.closest(".item"); li.classList.add("leaving");
-    setTimeout(() => act(() => api("PUT", t.dataset.shop + "/" + t.dataset.id, { checked: t.checked })).catch(() => {}), matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 200);
+    setTimeout(() => act(() => api("PUT", "shoppingList/" + t.dataset.shop, { checked: t.checked })).catch(() => {}), matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 200);
+  } else if (t.dataset.pick) {
+    const source = t.dataset.pick, x = SRC[source], li = t.closest(".pick"), qIn = li.querySelector('input[type=number]');
+    if (t.checked) {
+      const q = qIn.value === "" ? 1 : qIn.value;
+      act(() => api("POST", x.toBuy, { [x.ref]: t.dataset.ref, qty: q }), "Ajouté à « À acheter ».").catch(() => {});
+    } else act(() => api("DELETE", x.toBuy + "/" + t.dataset.line), "Retiré de « À acheter ».").catch(() => {});
   } else if (t.dataset.qty) {
     act(() => api("PUT", t.dataset.qty + "/" + t.dataset.id, { qty: t.value }), "Quantité enregistrée.").catch(() => {});
   } else if (t.dataset.note !== undefined) {
@@ -319,11 +363,20 @@ view.addEventListener("change", (e) => {
 view.addEventListener("input", (e) => {
   if (e.target.id === "dishSearch") { ui.dishQuery = e.target.value; render(); }
   if (e.target.id === "catSearch") { ui.catQuery = e.target.value; render(); }
+  if (e.target.id === "buySearch") { ui.buyQuery = e.target.value; render(); }
 });
 view.addEventListener("click", async (e) => {
   const b = e.target.closest("button"); if (!b) return;
   const d = b.dataset;
   try {
+    if (d.jump) { const el = document.getElementById(d.jump); if (el) { el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); } return; }
+    if (d.buymode) { ui.buyMode = d.buymode; render(); return; }
+    if (d.act === "genShop") {
+      const has = D.shoppingList.length;
+      await act(() => api("POST", "generateShopping"), (r) => `Liste de courses générée : ${r.count} articles${r.kept ? `, dont ${r.kept} déjà dans le panier` : ""}.`);
+      if (current() !== "courses") location.hash = "#courses";
+      return;
+    }
     if (d.act === "uncheck") await act(() => api("POST", "uncheck"), "Tous les articles sont de nouveau à acheter.");
     else if (d.act === "generate") {
       if (D.ingredientsToBuy.length && !confirm("Remplacer la liste actuelle des ingrédients à acheter (et vos ajustements) par celle calculée depuis les plats à préparer ?")) return;

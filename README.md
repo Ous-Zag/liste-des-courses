@@ -7,6 +7,15 @@ L’application tourne entièrement sur **GitHub Pages**, sans serveur. Toutes l
 - L’historique complet des modifications se voit dans les commits de la branche `data`.
 - Si deux personnes enregistrent en même temps, GitHub le détecte et l’application recommence avec la dernière version : aucune modification n’est perdue.
 
+## Fonctionnement
+
+1. **Catalogues** : ingrédients, produits laitiers, produits d’hygiène.
+2. **Plats** : composés d’ingrédients ; **Plats à préparer** : la liste des plats prévus.
+3. **À acheter** : les ingrédients sont générés depuis les plats à préparer, puis ajustables. Avec « Tout le catalogue », on coche n’importe quel article de chaque catalogue (ingrédients, produits laitiers, hygiène) et on règle sa quantité.
+4. **Courses** : la liste de courses est **générée à partir de « À acheter »** (bouton « Générer la liste de courses »). Une nouvelle génération garde cochés les articles déjà dans le panier. Si « À acheter » change, un message propose de mettre la liste à jour.
+
+Dans « Courses » et « À acheter », chaque catégorie a son accès rapide (cartes et barre de catégories), son nombre d’articles à acheter, son coût total et son coût restant.
+
 ## Contenu
 
 | Fichier | Rôle |

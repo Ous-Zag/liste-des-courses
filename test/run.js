@@ -43,6 +43,21 @@ const ok = (n) => console.log("  ok –", n);
       s2.mutate((d) => Core.route(d, "POST", "hygiene", { name: "Appareil B", unit: "pièce" })),
     ]);
     assert.equal(gh.file().hygiene.length, before + 2); ok("deux appareils en même temps : conflit détecté, aucune modification perdue");
+    // Liste de courses générée depuis « À acheter »
+    let f = gh.file();
+    await op("POST", "generateShopping");
+    f = gh.file(); const nBuy = f.ingredientsToBuy.filter((l) => l.qty > 0).length + f.dairyToBuy.filter((l) => l.qty > 0).length + f.hygieneToBuy.filter((l) => l.qty > 0).length;
+    assert.equal(f.shoppingList.length, nBuy); ok(`liste de courses générée depuis « À acheter » (${nBuy} articles)`);
+    const first = f.shoppingList[0];
+    await op("PUT", "shoppingList/" + first.id, { checked: true });
+    const dl = f.dairyToBuy[0]; await op("DELETE", "dairyToBuy/" + dl.id);
+    assert.ok(gh.file().shoppingList.some((l) => l.refId === dl.dairyId)); ok("modifier « À acheter » ne change pas la liste de courses avant régénération");
+    x = await op("POST", "generateShopping"); f = gh.file();
+    assert.ok(f.shoppingList.find((l) => l.id === first.id).checked); assert.ok(!f.shoppingList.some((l) => l.refId === dl.dairyId)); ok("régénérer garde les articles cochés et retire ceux enlevés de « À acheter »");
+    const hl = f.shoppingList.find((l) => l.source === "hygiene"); const hline = f.hygieneToBuy.find((l) => l.hygieneId === hl.refId);
+    await op("DELETE", "hygieneToBuy/" + hline.id); x = await op("DELETE", "hygiene/" + hl.refId);
+    assert.ok(!gh.file().shoppingList.some((l) => l.refId === hl.refId)); ok("supprimer un produit du catalogue le retire aussi de la liste de courses");
+    await op("POST", "uncheck"); assert.ok(gh.file().shoppingList.every((l) => !l.checked)); ok("tout décocher dans la liste de courses");
     await op("POST", "reset", { seed }); assert.equal(gh.file().hygiene.length, seed.hygiene.length); ok("réinitialisation");
     console.log(`\nTous les tests sont passés (${gh.st.commits} commits simulés).`);
   } catch (e) { console.error("\nÉCHEC :", e); process.exitCode = 1; }

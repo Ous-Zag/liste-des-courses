@@ -3,7 +3,7 @@
 // Il tourne dans le navigateur (window.Core) et dans Node pour les tests (module.exports).
 (function (root) {
 "use strict";
-const EMPTY = { version: 1, updatedAt: null, ingredients: [], dairy: [], hygiene: [], dishes: [], dishList: [], ingredientsToBuy: [], dairyToBuy: [], hygieneToBuy: [] };
+const EMPTY = { version: 1, updatedAt: null, ingredients: [], dairy: [], hygiene: [], dishes: [], dishList: [], ingredientsToBuy: [], dairyToBuy: [], hygieneToBuy: [], shoppingList: [] };
 function normalize(data) {
   for (const k of Object.keys(EMPTY)) if (data[k] === undefined) data[k] = Array.isArray(EMPTY[k]) ? [] : EMPTY[k];
   return data;
@@ -99,6 +99,7 @@ function update(data, col, id, body) {
   if (CATALOGS[col]) return (list[i] = catalogItem(data, col, body, list[i]));
   if (col === "dishes") return (list[i] = dishItem(data, body, list[i]));
   if (col === "dishList") { if (body.note !== undefined) list[i].note = str(body.note); return list[i]; }
+  if (col === "shoppingList") { if (body.checked !== undefined) list[i].checked = !!body.checked; return list[i]; }
   if (TOBUY[col]) {
     if (body.qty !== undefined) list[i].qty = num(body.qty, "quantité");
     if (body.checked !== undefined) list[i].checked = !!body.checked;
@@ -129,6 +130,11 @@ function remove(data, col, id) {
     data.dishList = data.dishList.filter((x) => x.dishId !== id);
     if (n) notes.push(`Il a aussi été retiré ${n} fois de la liste des plats.`);
   }
+  if (CATALOGS[col]) {
+    const before = data.shoppingList.length;
+    data.shoppingList = data.shoppingList.filter((l) => !(l.source === col && l.refId === id));
+    if (data.shoppingList.length < before) notes.push("Il a aussi été retiré de la liste de courses.");
+  }
   data[col] = data[col].filter((x) => x.id !== id);
   return { deleted: id, notes };
 }
@@ -145,31 +151,51 @@ function generate(data) {
 }
 
 
+// Liste de courses : générée à partir des trois listes « À acheter ».
+// Les articles déjà cochés (dans le panier) le restent après une nouvelle génération.
+const SOURCES = { ingredients: { toBuy: "ingredientsToBuy", ref: "ingredientId" }, dairy: { toBuy: "dairyToBuy", ref: "dairyId" }, hygiene: { toBuy: "hygieneToBuy", ref: "hygieneId" } };
+function generateShopping(data) {
+  const prev = new Map(data.shoppingList.map((l) => [l.source + "|" + l.refId, l]));
+  const out = [];
+  for (const [source, s] of Object.entries(SOURCES)) {
+    for (const line of data[s.toBuy]) {
+      if (!(line.qty > 0) || !data[source].some((x) => x.id === line[s.ref])) continue;
+      const old = prev.get(source + "|" + line[s.ref]);
+      out.push({ id: old ? old.id : newId("lc"), source, refId: line[s.ref], qty: line.qty, checked: !!(old && old.checked) });
+    }
+  }
+  data.shoppingList = out;
+  return { count: out.length, kept: out.filter((l) => l.checked).length };
+}
+
 // Une opération = { method, url, body }, comme une requête d’API.
 function route(data, method, url, body = {}) {
   normalize(data);
   const [col, id] = url.split("/").filter(Boolean);
   if (method === "POST" && col === "generate") return generate(data);
-  if (method === "POST" && col === "uncheck") { for (const k of Object.keys(TOBUY)) data[k].forEach((x) => (x.checked = false)); return {}; }
+  if (method === "POST" && col === "generateShopping") return generateShopping(data);
+  if (method === "POST" && col === "uncheck") { for (const k of [...Object.keys(TOBUY), "shoppingList"]) data[k].forEach((x) => (x.checked = false)); return {}; }
   if (method === "POST" && col === "reset") { const seed = body.seed; if (!seed) throw new AppError(400, "Données de départ manquantes."); Object.keys(data).forEach((k) => delete data[k]); Object.assign(data, JSON.parse(JSON.stringify(seed))); return {}; }
   if (method === "POST" && col && !id) return create(data, col, body);
   if (method === "PUT" && col && id) return update(data, col, id, body);
   if (method === "DELETE" && col && id) return remove(data, col, id);
   throw new AppError(404, "Opération inconnue.");
 }
-const LABELS = { ingredients: "ingrédient", dairy: "produit laitier", hygiene: "produit d’hygiène", dishes: "plat", dishList: "plat à préparer", ingredientsToBuy: "ingrédient à acheter", dairyToBuy: "produit laitier à acheter", hygieneToBuy: "produit d’hygiène à acheter" };
+const LABELS = { ingredients: "ingrédient", dairy: "produit laitier", hygiene: "produit d’hygiène", dishes: "plat", dishList: "plat à préparer", ingredientsToBuy: "ingrédient à acheter", dairyToBuy: "produit laitier à acheter", hygieneToBuy: "produit d’hygiène à acheter", shoppingList: "liste de courses" };
 function describe(data, method, url, body = {}) {
   const [col, id] = url.split("/").filter(Boolean);
   if (col === "generate") return "Générer les ingrédients à acheter";
+  if (col === "generateShopping") return "Générer la liste de courses";
   if (col === "uncheck") return "Tout décocher";
   if (col === "reset") return "Réinitialiser les données";
   const item = id && Array.isArray(data[col]) ? data[col].find((x) => x.id === id) : null;
   let name = body.name || (item && item.name) || "";
   if (!name && TOBUY[col]) { const t = TOBUY[col]; const ref = data[t.catalog].find((x) => x.id === (item ? item[t.ref] : body[t.ref])); name = ref ? ref.name : ""; }
+  if (!name && col === "shoppingList" && item) { const ref = (data[item.source] || []).find((x) => x.id === item.refId); name = ref ? ref.name : ""; }
   if (!name && col === "dishList") { const d = data.dishes.find((x) => x.id === (item ? item.dishId : body.dishId)); name = d ? d.name : ""; }
   const verb = method === "POST" ? "Ajout" : method === "PUT" ? (body.checked !== undefined ? (body.checked ? "Coché" : "Décoché") : "Modification") : "Suppression";
   return `${verb} : ${LABELS[col] || col}${name ? " « " + name + " »" : ""}`;
 }
-const api = { route, describe, normalize, AppError, EMPTY };
+const api = { route, describe, normalize, AppError, EMPTY, SOURCES };
 if (typeof module !== "undefined" && module.exports) module.exports = api; else root.Core = api;
 })(typeof window !== "undefined" ? window : globalThis);
