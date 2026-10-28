@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-28T13:28:30.156Z",
+ "updatedAt": "2026-10-28T13:31:43.888Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -2310,17 +2310,6 @@
      "qty": 1000
     }
    ]
-  },
-  {
-   "id": "plat-27",
-   "name": "Eau minérale (1,5 L par personne et par jour)",
-   "hidden": false,
-   "ingredients": [
-    {
-     "ingredientId": "ing-39",
-     "qty": 10
-    }
-   ]
   }
  ],
  "dishList": [
@@ -2468,11 +2457,6 @@
    "id": "pl-29",
    "dishId": "plat-26",
    "note": "Jours 1 à 14 – Dessert"
-  },
-  {
-   "id": "pl-30",
-   "dishId": "plat-27",
-   "note": "Jours 1 à 14 – Boisson"
   }
  ],
  "ingredientsToBuy": [
