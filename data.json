@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-28T13:51:38.930Z",
+ "updatedAt": "2026-10-28T14:02:51.359Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -3007,6 +3007,645 @@
   {
    "id": "ha-16",
    "hygieneId": "hyg-16",
+   "qty": 1,
+   "checked": false
+  }
+ ],
+ "shoppingList": [
+  {
+   "id": "lc-ae89b0a7",
+   "source": "ingredients",
+   "refId": "ing-1",
+   "qty": 1800,
+   "checked": false
+  },
+  {
+   "id": "lc-0baaa155",
+   "source": "ingredients",
+   "refId": "ing-2",
+   "qty": 3100,
+   "checked": false
+  },
+  {
+   "id": "lc-df9d7b9f",
+   "source": "ingredients",
+   "refId": "ing-3",
+   "qty": 1400,
+   "checked": false
+  },
+  {
+   "id": "lc-94922d30",
+   "source": "ingredients",
+   "refId": "ing-4",
+   "qty": 650,
+   "checked": false
+  },
+  {
+   "id": "lc-dd3902f5",
+   "source": "ingredients",
+   "refId": "ing-5",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "lc-1e89e87e",
+   "source": "ingredients",
+   "refId": "ing-6",
+   "qty": 1300,
+   "checked": false
+  },
+  {
+   "id": "lc-0bbd55e3",
+   "source": "ingredients",
+   "refId": "ing-7",
+   "qty": 400,
+   "checked": false
+  },
+  {
+   "id": "lc-7eb3d39e",
+   "source": "ingredients",
+   "refId": "ing-8",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "lc-436f3242",
+   "source": "ingredients",
+   "refId": "ing-9",
+   "qty": 700,
+   "checked": false
+  },
+  {
+   "id": "lc-b236e7a4",
+   "source": "ingredients",
+   "refId": "ing-10",
+   "qty": 500,
+   "checked": false
+  },
+  {
+   "id": "lc-6a859643",
+   "source": "ingredients",
+   "refId": "ing-11",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "lc-e2ad0c83",
+   "source": "ingredients",
+   "refId": "ing-12",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "lc-e9152155",
+   "source": "ingredients",
+   "refId": "ing-13",
+   "qty": 6,
+   "checked": false
+  },
+  {
+   "id": "lc-4add528c",
+   "source": "ingredients",
+   "refId": "ing-14",
+   "qty": 55,
+   "checked": false
+  },
+  {
+   "id": "lc-c5c021da",
+   "source": "ingredients",
+   "refId": "ing-15",
+   "qty": 360,
+   "checked": false
+  },
+  {
+   "id": "lc-7b218620",
+   "source": "ingredients",
+   "refId": "ing-16",
+   "qty": 5700,
+   "checked": false
+  },
+  {
+   "id": "lc-f3a3867f",
+   "source": "ingredients",
+   "refId": "ing-17",
+   "qty": 4650,
+   "checked": false
+  },
+  {
+   "id": "lc-a01debfd",
+   "source": "ingredients",
+   "refId": "ing-18",
+   "qty": 2500,
+   "checked": false
+  },
+  {
+   "id": "lc-f84b2786",
+   "source": "ingredients",
+   "refId": "ing-19",
+   "qty": 370,
+   "checked": false
+  },
+  {
+   "id": "lc-c5204915",
+   "source": "ingredients",
+   "refId": "ing-20",
+   "qty": 1500,
+   "checked": false
+  },
+  {
+   "id": "lc-1e2d8bb1",
+   "source": "ingredients",
+   "refId": "ing-21",
+   "qty": 1800,
+   "checked": false
+  },
+  {
+   "id": "lc-2e0846fa",
+   "source": "ingredients",
+   "refId": "ing-22",
+   "qty": 1600,
+   "checked": false
+  },
+  {
+   "id": "lc-8f644d7c",
+   "source": "ingredients",
+   "refId": "ing-23",
+   "qty": 480,
+   "checked": false
+  },
+  {
+   "id": "lc-1f396081",
+   "source": "ingredients",
+   "refId": "ing-24",
+   "qty": 65,
+   "checked": false
+  },
+  {
+   "id": "lc-20793407",
+   "source": "ingredients",
+   "refId": "ing-25",
+   "qty": 900,
+   "checked": false
+  },
+  {
+   "id": "lc-be6ec3c1",
+   "source": "ingredients",
+   "refId": "ing-26",
+   "qty": 1600,
+   "checked": false
+  },
+  {
+   "id": "lc-d53d7167",
+   "source": "ingredients",
+   "refId": "ing-27",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-7d7954a8",
+   "source": "ingredients",
+   "refId": "ing-28",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "lc-6bc3d777",
+   "source": "ingredients",
+   "refId": "ing-29",
+   "qty": 700,
+   "checked": false
+  },
+  {
+   "id": "lc-87e2392c",
+   "source": "ingredients",
+   "refId": "ing-30",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-8e2ff9c1",
+   "source": "ingredients",
+   "refId": "ing-31",
+   "qty": 5,
+   "checked": false
+  },
+  {
+   "id": "lc-fc7f2c44",
+   "source": "ingredients",
+   "refId": "ing-32",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-6daaaa82",
+   "source": "ingredients",
+   "refId": "ing-33",
+   "qty": 1500,
+   "checked": false
+  },
+  {
+   "id": "lc-eda92b31",
+   "source": "ingredients",
+   "refId": "ing-34",
+   "qty": 3000,
+   "checked": false
+  },
+  {
+   "id": "lc-f8d98827",
+   "source": "ingredients",
+   "refId": "ing-35",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "lc-ae4a1ccf",
+   "source": "ingredients",
+   "refId": "ing-36",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "lc-157e0953",
+   "source": "ingredients",
+   "refId": "ing-37",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "lc-fc8db9fa",
+   "source": "ingredients",
+   "refId": "ing-38",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "lc-ccbba52f",
+   "source": "ingredients",
+   "refId": "ing-39",
+   "qty": 10,
+   "checked": false
+  },
+  {
+   "id": "lc-aad8e6e6",
+   "source": "ingredients",
+   "refId": "ing-40",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "lc-b42242d7",
+   "source": "ingredients",
+   "refId": "ing-41",
+   "qty": 800,
+   "checked": false
+  },
+  {
+   "id": "lc-f34b1183",
+   "source": "ingredients",
+   "refId": "ing-42",
+   "qty": 650,
+   "checked": false
+  },
+  {
+   "id": "lc-969b0b38",
+   "source": "ingredients",
+   "refId": "ing-43",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "lc-77cafcec",
+   "source": "ingredients",
+   "refId": "ing-44",
+   "qty": 250,
+   "checked": false
+  },
+  {
+   "id": "lc-ee3cdddc",
+   "source": "ingredients",
+   "refId": "ing-45",
+   "qty": 150,
+   "checked": false
+  },
+  {
+   "id": "lc-2389c596",
+   "source": "ingredients",
+   "refId": "ing-46",
+   "qty": 120,
+   "checked": false
+  },
+  {
+   "id": "lc-664f45fd",
+   "source": "ingredients",
+   "refId": "ing-47",
+   "qty": 350,
+   "checked": false
+  },
+  {
+   "id": "lc-f95de450",
+   "source": "ingredients",
+   "refId": "ing-48",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "lc-e6761ce0",
+   "source": "ingredients",
+   "refId": "ing-49",
+   "qty": 1.75,
+   "checked": false
+  },
+  {
+   "id": "lc-e77b260d",
+   "source": "ingredients",
+   "refId": "ing-50",
+   "qty": 500,
+   "checked": false
+  },
+  {
+   "id": "lc-88144f40",
+   "source": "ingredients",
+   "refId": "ing-51",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-f77d0600",
+   "source": "ingredients",
+   "refId": "ing-52",
+   "qty": 60,
+   "checked": false
+  },
+  {
+   "id": "lc-76aae114",
+   "source": "ingredients",
+   "refId": "ing-53",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-73a399fe",
+   "source": "ingredients",
+   "refId": "ing-54",
+   "qty": 100,
+   "checked": false
+  },
+  {
+   "id": "lc-7568e18c",
+   "source": "ingredients",
+   "refId": "ing-55",
+   "qty": 2270,
+   "checked": false
+  },
+  {
+   "id": "lc-4600f948",
+   "source": "ingredients",
+   "refId": "ing-56",
+   "qty": 3200,
+   "checked": false
+  },
+  {
+   "id": "lc-04e60937",
+   "source": "ingredients",
+   "refId": "ing-57",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "lc-f2db28ee",
+   "source": "ingredients",
+   "refId": "ing-58",
+   "qty": 173,
+   "checked": false
+  },
+  {
+   "id": "lc-b36661dd",
+   "source": "ingredients",
+   "refId": "ing-59",
+   "qty": 46,
+   "checked": false
+  },
+  {
+   "id": "lc-89d3c32d",
+   "source": "ingredients",
+   "refId": "ing-60",
+   "qty": 30,
+   "checked": false
+  },
+  {
+   "id": "lc-c1fc6d28",
+   "source": "ingredients",
+   "refId": "ing-61",
+   "qty": 22.5,
+   "checked": false
+  },
+  {
+   "id": "lc-daeeb202",
+   "source": "ingredients",
+   "refId": "ing-62",
+   "qty": 18,
+   "checked": false
+  },
+  {
+   "id": "lc-74376702",
+   "source": "ingredients",
+   "refId": "ing-63",
+   "qty": 7,
+   "checked": false
+  },
+  {
+   "id": "lc-d7225ccf",
+   "source": "ingredients",
+   "refId": "ing-64",
+   "qty": 6,
+   "checked": false
+  },
+  {
+   "id": "lc-64a036ca",
+   "source": "ingredients",
+   "refId": "ing-65",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-a898f3dd",
+   "source": "ingredients",
+   "refId": "ing-66",
+   "qty": 10,
+   "checked": false
+  },
+  {
+   "id": "lc-41f9875b",
+   "source": "ingredients",
+   "refId": "ing-67",
+   "qty": 252,
+   "checked": false
+  },
+  {
+   "id": "lc-3ef729f2",
+   "source": "ingredients",
+   "refId": "ing-68",
+   "qty": 29.5,
+   "checked": false
+  },
+  {
+   "id": "lc-1ce74574",
+   "source": "dairy",
+   "refId": "lait-1",
+   "qty": 14,
+   "checked": false
+  },
+  {
+   "id": "lc-9e2f6f3d",
+   "source": "dairy",
+   "refId": "lait-2",
+   "qty": 56,
+   "checked": false
+  },
+  {
+   "id": "lc-3c91a5d0",
+   "source": "dairy",
+   "refId": "lait-3",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-1fa83826",
+   "source": "dairy",
+   "refId": "lait-4",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-2d99424f",
+   "source": "dairy",
+   "refId": "lait-5",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-40b0ce02",
+   "source": "dairy",
+   "refId": "lait-6",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-c003ad83",
+   "source": "dairy",
+   "refId": "lait-7",
+   "qty": 0.5,
+   "checked": false
+  },
+  {
+   "id": "lc-b68b12db",
+   "source": "hygiene",
+   "refId": "hyg-1",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-06ded77d",
+   "source": "hygiene",
+   "refId": "hyg-2",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-2c867dfb",
+   "source": "hygiene",
+   "refId": "hyg-3",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-015c29f4",
+   "source": "hygiene",
+   "refId": "hyg-4",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-72042f46",
+   "source": "hygiene",
+   "refId": "hyg-5",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-9635f9ef",
+   "source": "hygiene",
+   "refId": "hyg-6",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-a1b80aec",
+   "source": "hygiene",
+   "refId": "hyg-7",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-36228993",
+   "source": "hygiene",
+   "refId": "hyg-8",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-1eb6ff1d",
+   "source": "hygiene",
+   "refId": "hyg-9",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-1c19cb50",
+   "source": "hygiene",
+   "refId": "hyg-10",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "lc-6f737395",
+   "source": "hygiene",
+   "refId": "hyg-11",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-731161fc",
+   "source": "hygiene",
+   "refId": "hyg-12",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-d83f72e8",
+   "source": "hygiene",
+   "refId": "hyg-13",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "lc-a987f9dd",
+   "source": "hygiene",
+   "refId": "hyg-14",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "lc-d8a68b45",
+   "source": "hygiene",
+   "refId": "hyg-15",
+   "qty": 3,
+   "checked": false
+  },
+  {
+   "id": "lc-3c324e70",
+   "source": "hygiene",
+   "refId": "hyg-16",
    "qty": 1,
    "checked": false
   }
