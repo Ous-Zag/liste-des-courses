@@ -1,5 +1,7 @@
-name: Déployer sur GitHub Pages
+name: Tester et déployer sur GitHub Pages
 
+# Seule la branche main déploie le site. Les enregistrements de données
+# (commits sur la branche « data ») ne déclenchent rien.
 on:
   push:
     branches: [main]
@@ -15,7 +17,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node test/run.js
+
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
