@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-28T13:34:29.825Z",
+ "updatedAt": "2026-10-28T13:34:57.155Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -2626,19 +2626,19 @@
    "id": "ia-28",
    "ingredientId": "ing-28",
    "qty": 600,
-   "checked": true
+   "checked": false
   },
   {
    "id": "ia-29",
    "ingredientId": "ing-29",
    "qty": 700,
-   "checked": true
+   "checked": false
   },
   {
    "id": "ia-30",
    "ingredientId": "ing-30",
    "qty": 1,
-   "checked": true
+   "checked": false
   },
   {
    "id": "ia-31",
@@ -2996,7 +2996,7 @@
    "id": "ha-14",
    "hygieneId": "hyg-14",
    "qty": 4,
-   "checked": true
+   "checked": false
   },
   {
    "id": "ha-15",
@@ -3008,7 +3008,7 @@
    "id": "ha-16",
    "hygieneId": "hyg-16",
    "qty": 1,
-   "checked": true
+   "checked": false
   }
  ]
 }
