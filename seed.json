@@ -1,0 +1,3030 @@
+{
+ "version": 1,
+ "updatedAt": "2026-10-27T12:00:00.000Z",
+ "ingredients": [
+  {
+   "id": "ing-1",
+   "name": "Escalopes de poulet",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "إسكالوب دجاج (escalope djej)",
+   "price": 19.4
+  },
+  {
+   "id": "ing-2",
+   "name": "Cuisses de poulet",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "فخاذ دجاج (fkhadh djej)",
+   "price": 14.9
+  },
+  {
+   "id": "ing-3",
+   "name": "Morceaux de poulet (pilons, hauts de cuisse)",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "طرف دجاج (traf djej)",
+   "price": 14.9
+  },
+  {
+   "id": "ing-4",
+   "name": "Blanc de poulet",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "صدر دجاج (sedr djej)",
+   "price": 19.4
+  },
+  {
+   "id": "ing-5",
+   "name": "Poulet pour spaghetti",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "دجاج (djej)",
+   "price": 14.9
+  },
+  {
+   "id": "ing-6",
+   "name": "Bœuf à mijoter",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "لحم بقري (lham bagri)",
+   "price": 47.5
+  },
+  {
+   "id": "ing-7",
+   "name": "Agneau",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "لحم علوش (lham 3allouch)",
+   "price": 60
+  },
+  {
+   "id": "ing-8",
+   "name": "Viande hachée",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "لحم مرحي (lham mor7i)",
+   "price": 45
+  },
+  {
+   "id": "ing-9",
+   "name": "Foie",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "كبدة (kebda)",
+   "price": 45
+  },
+  {
+   "id": "ing-10",
+   "name": "Merguez",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "مرقاز (mergaz)",
+   "price": 40
+  },
+  {
+   "id": "ing-11",
+   "name": "Poisson à chair ferme (mérou, loup, dorade)",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "حوت: مناني، قاروص، وراطة",
+   "price": 22
+  },
+  {
+   "id": "ing-12",
+   "name": "Poisson blanc haché",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "حوت أبيض مرحي (7out abyedh mor7i)",
+   "price": 18
+  },
+  {
+   "id": "ing-13",
+   "name": "Thon en boîte (160 g)",
+   "unit": "boîte",
+   "category": "Viandes, poissons et œufs",
+   "ar": "تن (ton)",
+   "price": 4.5
+  },
+  {
+   "id": "ing-14",
+   "name": "Œufs",
+   "unit": "œuf",
+   "category": "Viandes, poissons et œufs",
+   "ar": "عظم (3dham)",
+   "price": 0.3
+  },
+  {
+   "id": "ing-15",
+   "name": "Fromage râpé",
+   "unit": "g",
+   "category": "Viandes, poissons et œufs",
+   "ar": "فرماج مرحي (fromej mra7i)",
+   "price": 30
+  },
+  {
+   "id": "ing-16",
+   "name": "Pommes de terre",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "بطاطا (batata)",
+   "price": 2.5
+  },
+  {
+   "id": "ing-17",
+   "name": "Tomates",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "طماطم (tmatem)",
+   "price": 2
+  },
+  {
+   "id": "ing-18",
+   "name": "Oignons",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "بصل (bsal)",
+   "price": 1.2
+  },
+  {
+   "id": "ing-19",
+   "name": "Ail",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "ثوم (thoum)",
+   "price": 15
+  },
+  {
+   "id": "ing-20",
+   "name": "Carottes",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "سفنارية (sfenarya)",
+   "price": 2.5
+  },
+  {
+   "id": "ing-21",
+   "name": "Courgettes",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "قرع (gar3)",
+   "price": 2
+  },
+  {
+   "id": "ing-22",
+   "name": "Poivrons",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "فلفل حلو (felfel 7lou)",
+   "price": 2.5
+  },
+  {
+   "id": "ing-23",
+   "name": "Piments verts",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "فلفل أخضر (felfel akhdhar)",
+   "price": 2.5
+  },
+  {
+   "id": "ing-24",
+   "name": "Piments forts",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "فلفل حار (felfel 7arr)",
+   "price": 3.3
+  },
+  {
+   "id": "ing-25",
+   "name": "Citrouille / potiron",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "كابوية (kabouya)",
+   "price": 1.5
+  },
+  {
+   "id": "ing-26",
+   "name": "Concombres",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "فقوس (fagous)",
+   "price": 2.5
+  },
+  {
+   "id": "ing-27",
+   "name": "Laitues",
+   "unit": "pièce",
+   "category": "Légumes et herbes",
+   "ar": "خص (khass)",
+   "price": 1
+  },
+  {
+   "id": "ing-28",
+   "name": "Épinards (ou blettes)",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "سبناخ (sbenekh) / سلق (selg)",
+   "price": 4
+  },
+  {
+   "id": "ing-29",
+   "name": "Petits pois",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "جلبانة (jelbana)",
+   "price": 3.4
+  },
+  {
+   "id": "ing-30",
+   "name": "Céleri",
+   "unit": "botte",
+   "category": "Légumes et herbes",
+   "ar": "كرافس (krafes)",
+   "price": 1
+  },
+  {
+   "id": "ing-31",
+   "name": "Persil",
+   "unit": "botte",
+   "category": "Légumes et herbes",
+   "ar": "معدنوس (ma3dnous)",
+   "price": 0.8
+  },
+  {
+   "id": "ing-32",
+   "name": "Romarin ou thym",
+   "unit": "botte",
+   "category": "Légumes et herbes",
+   "ar": "إكليل (iklil) / زعتر (za3tar)",
+   "price": 1
+  },
+  {
+   "id": "ing-33",
+   "name": "Citrons",
+   "unit": "g",
+   "category": "Légumes et herbes",
+   "ar": "قارص (gares)",
+   "price": 3
+  },
+  {
+   "id": "ing-34",
+   "name": "Pommes",
+   "unit": "g",
+   "category": "Fruits",
+   "ar": "تفاح (teffe7)",
+   "price": 3.99
+  },
+  {
+   "id": "ing-35",
+   "name": "Grenades",
+   "unit": "g",
+   "category": "Fruits",
+   "ar": "رمان (rommen)",
+   "price": 3.99
+  },
+  {
+   "id": "ing-36",
+   "name": "Raisin",
+   "unit": "g",
+   "category": "Fruits",
+   "ar": "عنب (3neb)",
+   "price": 4.9
+  },
+  {
+   "id": "ing-37",
+   "name": "Bananes",
+   "unit": "g",
+   "category": "Fruits",
+   "ar": "بنان (banan)",
+   "price": 7
+  },
+  {
+   "id": "ing-38",
+   "name": "Dattes (Deglet Nour, branchées)",
+   "unit": "g",
+   "category": "Fruits",
+   "ar": "دقلة (deglet nour)",
+   "price": 5.17
+  },
+  {
+   "id": "ing-39",
+   "name": "Eau minérale 1,5 L (pack de 6)",
+   "unit": "pack de 6",
+   "category": "Boissons",
+   "ar": "ماء معدني (mé m3adni)",
+   "price": 5.1
+  },
+  {
+   "id": "ing-40",
+   "name": "Couscous moyen",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "كسكسي (kosksi)",
+   "price": 3
+  },
+  {
+   "id": "ing-41",
+   "name": "Spaghetti",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "مقرونة سباقتي (makrouna spaghetti)",
+   "price": 3.1
+  },
+  {
+   "id": "ing-42",
+   "name": "Riz (ou bulgur)",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "روز (rouz) / برغل (borghol)",
+   "price": 5
+  },
+  {
+   "id": "ing-43",
+   "name": "Pâtes d'orge (châer)",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "شعير (ch3ir)",
+   "price": 3.3
+  },
+  {
+   "id": "ing-44",
+   "name": "M'hamsa",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "محمصة (m7amsa)",
+   "price": 6
+  },
+  {
+   "id": "ing-45",
+   "name": "Frik",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "فريك (frik)",
+   "price": 10
+  },
+  {
+   "id": "ing-46",
+   "name": "Langues d'oiseaux",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "لسان عصفور (lsan 3asfour)",
+   "price": 4
+  },
+  {
+   "id": "ing-47",
+   "name": "Pois chiches secs",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "حمص (7ommos)",
+   "price": 6
+  },
+  {
+   "id": "ing-48",
+   "name": "Haricots blancs secs",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "لوبيا (loubya)",
+   "price": 6
+  },
+  {
+   "id": "ing-49",
+   "name": "Feuilles de malsouka",
+   "unit": "paquet",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "ملسوقة (malsouka)",
+   "price": 1.5
+  },
+  {
+   "id": "ing-50",
+   "name": "Farine ou semoule fine",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "فارينة (farina) / سميد رقيق (smid rgig)",
+   "price": 1.2
+  },
+  {
+   "id": "ing-51",
+   "name": "Levure boulangère",
+   "unit": "sachet",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "خميرة (khmira)",
+   "price": 0.3
+  },
+  {
+   "id": "ing-52",
+   "name": "Chapelure",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "شابلور (chapelure)",
+   "price": 8
+  },
+  {
+   "id": "ing-53",
+   "name": "Pain (baguettes ou tabouna)",
+   "unit": "baguette",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "خبز باقات / طابونة",
+   "price": 0.2
+  },
+  {
+   "id": "ing-54",
+   "name": "Poudre de mloukhia",
+   "unit": "g",
+   "category": "Féculents, pâtes et légumes secs",
+   "ar": "ملوخية (mloukhia)",
+   "price": 40
+  },
+  {
+   "id": "ing-55",
+   "name": "Huile d'olive",
+   "unit": "ml",
+   "category": "Huiles, condiments et épices",
+   "ar": "زيت زيتون (zit zitoun)",
+   "price": 12.5
+  },
+  {
+   "id": "ing-56",
+   "name": "Huile de friture",
+   "unit": "ml",
+   "category": "Huiles, condiments et épices",
+   "ar": "زيت نباتي (zit nabeti)",
+   "price": 6
+  },
+  {
+   "id": "ing-57",
+   "name": "Concentré de tomate",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "طماطم معجون (tmatem m3ajna)",
+   "price": 9
+  },
+  {
+   "id": "ing-58",
+   "name": "Harissa",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "هريسة (harissa)",
+   "price": 11
+  },
+  {
+   "id": "ing-59",
+   "name": "Tabel (ou tabel-karwiya)",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "تابل (tabel)",
+   "price": 33
+  },
+  {
+   "id": "ing-60",
+   "name": "Curcuma",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "عقدة صفراء (3agda safra)",
+   "price": 40
+  },
+  {
+   "id": "ing-61",
+   "name": "Piment doux / paprika",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "فلفل زينة (felfel zina)",
+   "price": 40
+  },
+  {
+   "id": "ing-62",
+   "name": "Carvi",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "كروية (karwiya)",
+   "price": 40
+  },
+  {
+   "id": "ing-63",
+   "name": "Menthe séchée",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "نعناع شايح (na3na3 cheye7)",
+   "price": 50
+  },
+  {
+   "id": "ing-64",
+   "name": "Cumin",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "كمون (kammoun)",
+   "price": 50
+  },
+  {
+   "id": "ing-65",
+   "name": "Laurier",
+   "unit": "forfait",
+   "category": "Huiles, condiments et épices",
+   "ar": "ورق رند (wra9 rand)",
+   "price": 0.2
+  },
+  {
+   "id": "ing-66",
+   "name": "Câpres (facultatif)",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "كبار (kabbar)",
+   "price": 30
+  },
+  {
+   "id": "ing-67",
+   "name": "Sel",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "ملح (mel7)",
+   "price": 0.8
+  },
+  {
+   "id": "ing-68",
+   "name": "Poivre noir",
+   "unit": "g",
+   "category": "Huiles, condiments et épices",
+   "ar": "فلفل أكحل (felfel ak7el)",
+   "price": 50
+  }
+ ],
+ "dairy": [
+  {
+   "id": "lait-1",
+   "name": "Lait demi-écrémé (1 L)",
+   "unit": "bouteille 1 L",
+   "ar": "حليب (7lib)",
+   "price": 1.35
+  },
+  {
+   "id": "lait-2",
+   "name": "Yaourt nature",
+   "unit": "pot",
+   "ar": "ياغورت (yaghourt)",
+   "price": 0.55
+  },
+  {
+   "id": "lait-3",
+   "name": "Lben (450 g)",
+   "unit": "bouteille",
+   "ar": "لبن (leben)",
+   "price": 1.59
+  },
+  {
+   "id": "lait-4",
+   "name": "Rayeb (450 g)",
+   "unit": "bouteille",
+   "ar": "رايب (rayeb)",
+   "price": 1.59
+  },
+  {
+   "id": "lait-5",
+   "name": "Beurre",
+   "unit": "plaquette 200 g",
+   "ar": "زبدة (zebda)",
+   "price": 8.2
+  },
+  {
+   "id": "lait-6",
+   "name": "Fromage en portions",
+   "unit": "boîte",
+   "ar": "فرماج بورسيون (fromej portion)",
+   "price": 4.5
+  },
+  {
+   "id": "lait-7",
+   "name": "Ricotta",
+   "unit": "kg",
+   "ar": "ريكوتا (ricotta)",
+   "price": 18
+  }
+ ],
+ "hygiene": [
+  {
+   "id": "hyg-1",
+   "name": "Savon de toilette",
+   "unit": "pain de 100 g",
+   "category": "Hygiène corporelle",
+   "ar": "صابون (saboun)",
+   "price": 1.8
+  },
+  {
+   "id": "hyg-2",
+   "name": "Savon liquide pour les mains",
+   "unit": "flacon 1 L",
+   "category": "Hygiène corporelle",
+   "ar": "صابون سائل (saboun sayel)",
+   "price": 8.99
+  },
+  {
+   "id": "hyg-3",
+   "name": "Shampooing 2 en 1",
+   "unit": "flacon 400 ml",
+   "category": "Hygiène corporelle",
+   "ar": "شامبوان (shampoing)",
+   "price": 5.65
+  },
+  {
+   "id": "hyg-4",
+   "name": "Dentifrice",
+   "unit": "tube 75 ml",
+   "category": "Hygiène corporelle",
+   "ar": "معجون سنين (ma3joun snin)",
+   "price": 2.99
+  },
+  {
+   "id": "hyg-5",
+   "name": "Brosses à dents",
+   "unit": "pièce",
+   "category": "Hygiène corporelle",
+   "ar": "فرشة سنين (forchet snin)",
+   "price": 1.59
+  },
+  {
+   "id": "hyg-6",
+   "name": "Papier hygiénique",
+   "unit": "paquet de 12 rouleaux",
+   "category": "Hygiène corporelle",
+   "ar": "كاغط توالات (kaghet twalet)",
+   "price": 8.99
+  },
+  {
+   "id": "hyg-7",
+   "name": "Déodorant",
+   "unit": "flacon 150 ml",
+   "category": "Hygiène corporelle",
+   "ar": "ديودوران (déodorant)",
+   "price": 7
+  },
+  {
+   "id": "hyg-8",
+   "name": "Serviettes hygiéniques (selon besoin)",
+   "unit": "paquet",
+   "category": "Hygiène corporelle",
+   "ar": "فوطة صحية (fouta si77iya)",
+   "price": 4.5
+  },
+  {
+   "id": "hyg-9",
+   "name": "Gel antibactérien",
+   "unit": "flacon 125 ml",
+   "category": "Hygiène corporelle",
+   "ar": "جال معقم (gel m3aqqem)",
+   "price": 3.69
+  },
+  {
+   "id": "hyg-10",
+   "name": "Liquide vaisselle",
+   "unit": "flacon 960 ml",
+   "category": "Entretien de la maison",
+   "ar": "صابون ماعون (saboun ma3oun)",
+   "price": 6.69
+  },
+  {
+   "id": "hyg-11",
+   "name": "Eau de javel",
+   "unit": "bidon 3 L",
+   "category": "Entretien de la maison",
+   "ar": "جافال (javel)",
+   "price": 5.35
+  },
+  {
+   "id": "hyg-12",
+   "name": "Nettoyant sol",
+   "unit": "bidon 3 L",
+   "category": "Entretien de la maison",
+   "ar": "صابون القاعة (saboun el gaa3a)",
+   "price": 6.62
+  },
+  {
+   "id": "hyg-13",
+   "name": "Lessive en poudre (machine)",
+   "unit": "paquet",
+   "category": "Entretien de la maison",
+   "ar": "صابون ماكينة (saboun makina)",
+   "price": 21.79
+  },
+  {
+   "id": "hyg-14",
+   "name": "Éponges",
+   "unit": "pièce",
+   "category": "Entretien de la maison",
+   "ar": "سفنجة (sfenja)",
+   "price": 0.69
+  },
+  {
+   "id": "hyg-15",
+   "name": "Sacs poubelle 70 L",
+   "unit": "rouleau de 10",
+   "category": "Entretien de la maison",
+   "ar": "ساشيات زبلة (sachiet zebla)",
+   "price": 2.15
+  },
+  {
+   "id": "hyg-16",
+   "name": "Serviettes de table",
+   "unit": "paquet de 90",
+   "category": "Entretien de la maison",
+   "ar": "محارم (m7arem)",
+   "price": 3.06
+  }
+ ],
+ "dishes": [
+  {
+   "id": "plat-1",
+   "name": "Couscous au poisson",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-40",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-11",
+     "qty": 1000
+    },
+    {
+     "ingredientId": "ing-20",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-23",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-64",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 12
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 100
+    }
+   ]
+  },
+  {
+   "id": "plat-2",
+   "name": "Salade méchouia + thon, œufs + pain maison",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-22",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-24",
+     "qty": 30
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 120
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 12
+    },
+    {
+     "ingredientId": "ing-13",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 4
+    },
+    {
+     "ingredientId": "ing-50",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-51",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-3",
+   "name": "Tajine tunisien au poulet",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-4",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 600
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 8
+    },
+    {
+     "ingredientId": "ing-15",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.5
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 1.5
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 1.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 30
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-4",
+   "name": "Chorba frik",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-45",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-7",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-47",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-30",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 1.5
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-63",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 200
+    }
+   ]
+  },
+  {
+   "id": "plat-5",
+   "name": "Marqa jelbana bel djedj",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-2",
+     "qty": 1000
+    },
+    {
+     "ingredientId": "ing-29",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 75
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-6",
+   "name": "Ojja merguez + pain",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-10",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-22",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-24",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-53",
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": "plat-7",
+   "name": "Spaghetti tunisien",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-41",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-5",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-23",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 90
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-8",
+   "name": "Bricks au thon + salade verte",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-49",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 8
+    },
+    {
+     "ingredientId": "ing-13",
+     "qty": 2
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.5
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-66",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-27",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 250
+    },
+    {
+     "ingredientId": "ing-26",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 45
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 50
+    }
+   ]
+  },
+  {
+   "id": "plat-9",
+   "name": "Mloukhia",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-54",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-6",
+     "qty": 800
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-65",
+     "qty": 0.43
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 12
+    },
+    {
+     "ingredientId": "ing-53",
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": "plat-10",
+   "name": "Chorba langues d'oiseaux + salade tunisienne",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-46",
+     "qty": 120
+    },
+    {
+     "ingredientId": "ing-3",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-30",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-63",
+     "qty": 2
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 120
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-26",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-13",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": "plat-11",
+   "name": "Marqa loubya bel djedj",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-48",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-2",
+     "qty": 1000
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-65",
+     "qty": 0.29
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 75
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-12",
+   "name": "Kefteji",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-22",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 450
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-25",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 4
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-13",
+   "name": "M'hamsa",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-44",
+     "qty": 250
+    },
+    {
+     "ingredientId": "ing-8",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-20",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-29",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-47",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 8
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-14",
+   "name": "Salade + escalope + frites",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-1",
+     "qty": 600
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 75
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 1.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-27",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 250
+    },
+    {
+     "ingredientId": "ing-26",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 1000
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 1000
+    }
+   ]
+  },
+  {
+   "id": "plat-15",
+   "name": "Riz djerbien",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-42",
+     "qty": 350
+    },
+    {
+     "ingredientId": "ing-4",
+     "qty": 250
+    },
+    {
+     "ingredientId": "ing-9",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-28",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.83
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-20",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-29",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-47",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-63",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 90
+    }
+   ]
+  },
+  {
+   "id": "plat-16",
+   "name": "Tajine sabanekh",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-28",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-15",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-52",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 45
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-17",
+   "name": "Markat batata",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-6",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 800
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-23",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-65",
+     "qty": 0.28
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 75
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-18",
+   "name": "Salade + escalope",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-1",
+     "qty": 600
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 75
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 10
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 1.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-27",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 250
+    },
+    {
+     "ingredientId": "ing-26",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 50
+    }
+   ]
+  },
+  {
+   "id": "plat-19",
+   "name": "Couscous aux légumes et pois chiches",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-40",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-47",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-20",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-25",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-23",
+     "qty": 120
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 12
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 2.5
+    }
+   ]
+  },
+  {
+   "id": "plat-20",
+   "name": "Chorba châer",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-43",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-3",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-20",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 150
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-30",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.5
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-63",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 100
+    }
+   ]
+  },
+  {
+   "id": "plat-21",
+   "name": "Mosli de poulet",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-2",
+     "qty": 1100
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 1000
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-23",
+     "qty": 120
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-60",
+     "qty": 3
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-32",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 90
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 2.5
+    }
+   ]
+  },
+  {
+   "id": "plat-22",
+   "name": "Salade tunisienne + bricks aux œufs",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-17",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-26",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 130
+    },
+    {
+     "ingredientId": "ing-13",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-63",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-49",
+     "qty": 0.75
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.17
+    },
+    {
+     "ingredientId": "ing-15",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 500
+    }
+   ]
+  },
+  {
+   "id": "plat-23",
+   "name": "Boulettes de poisson (hraimeh) + riz",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-12",
+     "qty": 600
+    },
+    {
+     "ingredientId": "ing-52",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-64",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 9
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 40
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-62",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-24",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-33",
+     "qty": 50
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 90
+    },
+    {
+     "ingredientId": "ing-42",
+     "qty": 300
+    }
+   ]
+  },
+  {
+   "id": "plat-24",
+   "name": "Ojja aux pommes de terre",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-16",
+     "qty": 600
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 350
+    },
+    {
+     "ingredientId": "ing-57",
+     "qty": 20
+    },
+    {
+     "ingredientId": "ing-19",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-22",
+     "qty": 200
+    },
+    {
+     "ingredientId": "ing-58",
+     "qty": 15
+    },
+    {
+     "ingredientId": "ing-64",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 60
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-56",
+     "qty": 300
+    }
+   ]
+  },
+  {
+   "id": "plat-25",
+   "name": "Kefteji au four + foie",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-22",
+     "qty": 400
+    },
+    {
+     "ingredientId": "ing-17",
+     "qty": 450
+    },
+    {
+     "ingredientId": "ing-21",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-25",
+     "qty": 300
+    },
+    {
+     "ingredientId": "ing-16",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-55",
+     "qty": 90
+    },
+    {
+     "ingredientId": "ing-9",
+     "qty": 500
+    },
+    {
+     "ingredientId": "ing-14",
+     "qty": 4
+    },
+    {
+     "ingredientId": "ing-18",
+     "qty": 100
+    },
+    {
+     "ingredientId": "ing-31",
+     "qty": 0.25
+    },
+    {
+     "ingredientId": "ing-13",
+     "qty": 1
+    },
+    {
+     "ingredientId": "ing-59",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-61",
+     "qty": 2.5
+    },
+    {
+     "ingredientId": "ing-67",
+     "qty": 6
+    },
+    {
+     "ingredientId": "ing-68",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "plat-26",
+   "name": "Fruits de saison (1 portion par personne et par jour)",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-34",
+     "qty": 3000
+    },
+    {
+     "ingredientId": "ing-35",
+     "qty": 2000
+    },
+    {
+     "ingredientId": "ing-36",
+     "qty": 2000
+    },
+    {
+     "ingredientId": "ing-37",
+     "qty": 2000
+    },
+    {
+     "ingredientId": "ing-38",
+     "qty": 1000
+    }
+   ]
+  },
+  {
+   "id": "plat-27",
+   "name": "Eau minérale (1,5 L par personne et par jour)",
+   "hidden": false,
+   "ingredients": [
+    {
+     "ingredientId": "ing-39",
+     "qty": 10
+    }
+   ]
+  }
+ ],
+ "dishList": [
+  {
+   "id": "pl-1",
+   "dishId": "plat-1",
+   "note": "Jour 1 – Déjeuner"
+  },
+  {
+   "id": "pl-2",
+   "dishId": "plat-2",
+   "note": "Jour 1 – Dîner"
+  },
+  {
+   "id": "pl-3",
+   "dishId": "plat-3",
+   "note": "Jour 2 – Déjeuner"
+  },
+  {
+   "id": "pl-4",
+   "dishId": "plat-4",
+   "note": "Jour 2 – Dîner"
+  },
+  {
+   "id": "pl-5",
+   "dishId": "plat-5",
+   "note": "Jour 3 – Déjeuner"
+  },
+  {
+   "id": "pl-6",
+   "dishId": "plat-6",
+   "note": "Jour 3 – Dîner"
+  },
+  {
+   "id": "pl-7",
+   "dishId": "plat-7",
+   "note": "Jour 4 – Déjeuner"
+  },
+  {
+   "id": "pl-8",
+   "dishId": "plat-8",
+   "note": "Jour 4 – Dîner"
+  },
+  {
+   "id": "pl-9",
+   "dishId": "plat-9",
+   "note": "Jour 5 – Déjeuner"
+  },
+  {
+   "id": "pl-10",
+   "dishId": "plat-10",
+   "note": "Jour 5 – Dîner"
+  },
+  {
+   "id": "pl-11",
+   "dishId": "plat-11",
+   "note": "Jour 6 – Déjeuner"
+  },
+  {
+   "id": "pl-12",
+   "dishId": "plat-12",
+   "note": "Jour 6 – Dîner"
+  },
+  {
+   "id": "pl-13",
+   "dishId": "plat-13",
+   "note": "Jour 7 – Déjeuner"
+  },
+  {
+   "id": "pl-14",
+   "dishId": "plat-14",
+   "note": "Jour 7 – Dîner"
+  },
+  {
+   "id": "pl-15",
+   "dishId": "plat-15",
+   "note": "Jour 8 – Déjeuner"
+  },
+  {
+   "id": "pl-16",
+   "dishId": "plat-16",
+   "note": "Jour 8 – Dîner"
+  },
+  {
+   "id": "pl-17",
+   "dishId": "plat-17",
+   "note": "Jour 9 – Déjeuner"
+  },
+  {
+   "id": "pl-18",
+   "dishId": "plat-18",
+   "note": "Jour 9 – Dîner"
+  },
+  {
+   "id": "pl-19",
+   "dishId": "plat-7",
+   "note": "Jour 10 – Déjeuner"
+  },
+  {
+   "id": "pl-20",
+   "dishId": "plat-18",
+   "note": "Jour 10 – Dîner"
+  },
+  {
+   "id": "pl-21",
+   "dishId": "plat-19",
+   "note": "Jour 11 – Déjeuner"
+  },
+  {
+   "id": "pl-22",
+   "dishId": "plat-20",
+   "note": "Jour 11 – Dîner"
+  },
+  {
+   "id": "pl-23",
+   "dishId": "plat-21",
+   "note": "Jour 12 – Déjeuner"
+  },
+  {
+   "id": "pl-24",
+   "dishId": "plat-22",
+   "note": "Jour 12 – Dîner"
+  },
+  {
+   "id": "pl-25",
+   "dishId": "plat-23",
+   "note": "Jour 13 – Déjeuner"
+  },
+  {
+   "id": "pl-26",
+   "dishId": "plat-24",
+   "note": "Jour 13 – Dîner"
+  },
+  {
+   "id": "pl-27",
+   "dishId": "plat-25",
+   "note": "Jour 14 – Déjeuner"
+  },
+  {
+   "id": "pl-28",
+   "dishId": "plat-20",
+   "note": "Jour 14 – Dîner"
+  },
+  {
+   "id": "pl-29",
+   "dishId": "plat-26",
+   "note": "Jours 1 à 14 – Dessert"
+  },
+  {
+   "id": "pl-30",
+   "dishId": "plat-27",
+   "note": "Jours 1 à 14 – Boisson"
+  }
+ ],
+ "ingredientsToBuy": [
+  {
+   "id": "ia-1",
+   "ingredientId": "ing-1",
+   "qty": 1800,
+   "checked": false
+  },
+  {
+   "id": "ia-2",
+   "ingredientId": "ing-2",
+   "qty": 3100,
+   "checked": false
+  },
+  {
+   "id": "ia-3",
+   "ingredientId": "ing-3",
+   "qty": 1400,
+   "checked": false
+  },
+  {
+   "id": "ia-4",
+   "ingredientId": "ing-4",
+   "qty": 650,
+   "checked": false
+  },
+  {
+   "id": "ia-5",
+   "ingredientId": "ing-5",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "ia-6",
+   "ingredientId": "ing-6",
+   "qty": 1300,
+   "checked": false
+  },
+  {
+   "id": "ia-7",
+   "ingredientId": "ing-7",
+   "qty": 400,
+   "checked": false
+  },
+  {
+   "id": "ia-8",
+   "ingredientId": "ing-8",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "ia-9",
+   "ingredientId": "ing-9",
+   "qty": 700,
+   "checked": false
+  },
+  {
+   "id": "ia-10",
+   "ingredientId": "ing-10",
+   "qty": 500,
+   "checked": false
+  },
+  {
+   "id": "ia-11",
+   "ingredientId": "ing-11",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "ia-12",
+   "ingredientId": "ing-12",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "ia-13",
+   "ingredientId": "ing-13",
+   "qty": 6,
+   "checked": false
+  },
+  {
+   "id": "ia-14",
+   "ingredientId": "ing-14",
+   "qty": 55,
+   "checked": false
+  },
+  {
+   "id": "ia-15",
+   "ingredientId": "ing-15",
+   "qty": 360,
+   "checked": false
+  },
+  {
+   "id": "ia-16",
+   "ingredientId": "ing-16",
+   "qty": 5700,
+   "checked": false
+  },
+  {
+   "id": "ia-17",
+   "ingredientId": "ing-17",
+   "qty": 4650,
+   "checked": false
+  },
+  {
+   "id": "ia-18",
+   "ingredientId": "ing-18",
+   "qty": 2500,
+   "checked": false
+  },
+  {
+   "id": "ia-19",
+   "ingredientId": "ing-19",
+   "qty": 370,
+   "checked": false
+  },
+  {
+   "id": "ia-20",
+   "ingredientId": "ing-20",
+   "qty": 1500,
+   "checked": false
+  },
+  {
+   "id": "ia-21",
+   "ingredientId": "ing-21",
+   "qty": 1800,
+   "checked": false
+  },
+  {
+   "id": "ia-22",
+   "ingredientId": "ing-22",
+   "qty": 1600,
+   "checked": false
+  },
+  {
+   "id": "ia-23",
+   "ingredientId": "ing-23",
+   "qty": 480,
+   "checked": false
+  },
+  {
+   "id": "ia-24",
+   "ingredientId": "ing-24",
+   "qty": 65,
+   "checked": false
+  },
+  {
+   "id": "ia-25",
+   "ingredientId": "ing-25",
+   "qty": 900,
+   "checked": false
+  },
+  {
+   "id": "ia-26",
+   "ingredientId": "ing-26",
+   "qty": 1600,
+   "checked": false
+  },
+  {
+   "id": "ia-27",
+   "ingredientId": "ing-27",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "ia-28",
+   "ingredientId": "ing-28",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "ia-29",
+   "ingredientId": "ing-29",
+   "qty": 700,
+   "checked": false
+  },
+  {
+   "id": "ia-30",
+   "ingredientId": "ing-30",
+   "qty": 1.0,
+   "checked": false
+  },
+  {
+   "id": "ia-31",
+   "ingredientId": "ing-31",
+   "qty": 5.0,
+   "checked": false
+  },
+  {
+   "id": "ia-32",
+   "ingredientId": "ing-32",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ia-33",
+   "ingredientId": "ing-33",
+   "qty": 1500,
+   "checked": false
+  },
+  {
+   "id": "ia-34",
+   "ingredientId": "ing-34",
+   "qty": 3000,
+   "checked": false
+  },
+  {
+   "id": "ia-35",
+   "ingredientId": "ing-35",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "ia-36",
+   "ingredientId": "ing-36",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "ia-37",
+   "ingredientId": "ing-37",
+   "qty": 2000,
+   "checked": false
+  },
+  {
+   "id": "ia-38",
+   "ingredientId": "ing-38",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "ia-39",
+   "ingredientId": "ing-39",
+   "qty": 10,
+   "checked": false
+  },
+  {
+   "id": "ia-40",
+   "ingredientId": "ing-40",
+   "qty": 1000,
+   "checked": false
+  },
+  {
+   "id": "ia-41",
+   "ingredientId": "ing-41",
+   "qty": 800,
+   "checked": false
+  },
+  {
+   "id": "ia-42",
+   "ingredientId": "ing-42",
+   "qty": 650,
+   "checked": false
+  },
+  {
+   "id": "ia-43",
+   "ingredientId": "ing-43",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "ia-44",
+   "ingredientId": "ing-44",
+   "qty": 250,
+   "checked": false
+  },
+  {
+   "id": "ia-45",
+   "ingredientId": "ing-45",
+   "qty": 150,
+   "checked": false
+  },
+  {
+   "id": "ia-46",
+   "ingredientId": "ing-46",
+   "qty": 120,
+   "checked": false
+  },
+  {
+   "id": "ia-47",
+   "ingredientId": "ing-47",
+   "qty": 350,
+   "checked": false
+  },
+  {
+   "id": "ia-48",
+   "ingredientId": "ing-48",
+   "qty": 300,
+   "checked": false
+  },
+  {
+   "id": "ia-49",
+   "ingredientId": "ing-49",
+   "qty": 1.75,
+   "checked": false
+  },
+  {
+   "id": "ia-50",
+   "ingredientId": "ing-50",
+   "qty": 500,
+   "checked": false
+  },
+  {
+   "id": "ia-51",
+   "ingredientId": "ing-51",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ia-52",
+   "ingredientId": "ing-52",
+   "qty": 60,
+   "checked": false
+  },
+  {
+   "id": "ia-53",
+   "ingredientId": "ing-53",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "ia-54",
+   "ingredientId": "ing-54",
+   "qty": 100,
+   "checked": false
+  },
+  {
+   "id": "ia-55",
+   "ingredientId": "ing-55",
+   "qty": 2270,
+   "checked": false
+  },
+  {
+   "id": "ia-56",
+   "ingredientId": "ing-56",
+   "qty": 3200,
+   "checked": false
+  },
+  {
+   "id": "ia-57",
+   "ingredientId": "ing-57",
+   "qty": 600,
+   "checked": false
+  },
+  {
+   "id": "ia-58",
+   "ingredientId": "ing-58",
+   "qty": 173,
+   "checked": false
+  },
+  {
+   "id": "ia-59",
+   "ingredientId": "ing-59",
+   "qty": 46.0,
+   "checked": false
+  },
+  {
+   "id": "ia-60",
+   "ingredientId": "ing-60",
+   "qty": 30.0,
+   "checked": false
+  },
+  {
+   "id": "ia-61",
+   "ingredientId": "ing-61",
+   "qty": 22.5,
+   "checked": false
+  },
+  {
+   "id": "ia-62",
+   "ingredientId": "ing-62",
+   "qty": 18.0,
+   "checked": false
+  },
+  {
+   "id": "ia-63",
+   "ingredientId": "ing-63",
+   "qty": 7,
+   "checked": false
+  },
+  {
+   "id": "ia-64",
+   "ingredientId": "ing-64",
+   "qty": 6.0,
+   "checked": false
+  },
+  {
+   "id": "ia-65",
+   "ingredientId": "ing-65",
+   "qty": 1.0,
+   "checked": false
+  },
+  {
+   "id": "ia-66",
+   "ingredientId": "ing-66",
+   "qty": 10,
+   "checked": false
+  },
+  {
+   "id": "ia-67",
+   "ingredientId": "ing-67",
+   "qty": 252,
+   "checked": false
+  },
+  {
+   "id": "ia-68",
+   "ingredientId": "ing-68",
+   "qty": 29.5,
+   "checked": false
+  }
+ ],
+ "dairyToBuy": [
+  {
+   "id": "la-1",
+   "dairyId": "lait-1",
+   "qty": 14,
+   "checked": false
+  },
+  {
+   "id": "la-2",
+   "dairyId": "lait-2",
+   "qty": 56,
+   "checked": false
+  },
+  {
+   "id": "la-3",
+   "dairyId": "lait-3",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "la-4",
+   "dairyId": "lait-4",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "la-5",
+   "dairyId": "lait-5",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "la-6",
+   "dairyId": "lait-6",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "la-7",
+   "dairyId": "lait-7",
+   "qty": 0.5,
+   "checked": false
+  }
+ ],
+ "hygieneToBuy": [
+  {
+   "id": "ha-1",
+   "hygieneId": "hyg-1",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "ha-2",
+   "hygieneId": "hyg-2",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ha-3",
+   "hygieneId": "hyg-3",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-4",
+   "hygieneId": "hyg-4",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-5",
+   "hygieneId": "hyg-5",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "ha-6",
+   "hygieneId": "hyg-6",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-7",
+   "hygieneId": "hyg-7",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-8",
+   "hygieneId": "hyg-8",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-9",
+   "hygieneId": "hyg-9",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ha-10",
+   "hygieneId": "hyg-10",
+   "qty": 2,
+   "checked": false
+  },
+  {
+   "id": "ha-11",
+   "hygieneId": "hyg-11",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ha-12",
+   "hygieneId": "hyg-12",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ha-13",
+   "hygieneId": "hyg-13",
+   "qty": 1,
+   "checked": false
+  },
+  {
+   "id": "ha-14",
+   "hygieneId": "hyg-14",
+   "qty": 4,
+   "checked": false
+  },
+  {
+   "id": "ha-15",
+   "hygieneId": "hyg-15",
+   "qty": 3,
+   "checked": false
+  },
+  {
+   "id": "ha-16",
+   "hygieneId": "hyg-16",
+   "qty": 1,
+   "checked": false
+  }
+ ]
+}

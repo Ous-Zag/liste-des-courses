@@ -3,284 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Liste des courses</title>
-<meta name="description" content="Liste des courses du menu tunisien 14 jours, à cocher au marché.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Liste de courses</title>
+<meta name="description" content="Catalogues, plats, planning et liste de courses, enregistrés dans un fichier JSON sur GitHub.">
 <meta name="theme-color" content="#2A1B7A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Readex+Pro:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#F4F2FF; --surface:#FFFFFF; --ink:#16123A; --muted:#6B6890; --line:#E6E3F7;
-  --hero:#2A1B7A; --hero-ink:#FFFFFF; --pop:#FFD23F;
-  --sans:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif; --ar:"Readex Pro","Segoe UI",Tahoma,sans-serif;
-  color-scheme:light; box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#0F0C24;--surface:#1A1638;--ink:#F1EFFF;--muted:#A6A2C9;--line:#2C2754;--hero:#2A1B7A;color-scheme:dark}
-}
-:root[data-theme="dark"]{--bg:#0F0C24;--surface:#1A1638;--ink:#F1EFFF;--muted:#A6A2C9;--line:#2C2754;--hero:#2A1B7A;color-scheme:dark}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
-*,*::before,*::after{box-sizing:inherit}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.45}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-:focus-visible{outline:3px solid var(--pop);outline-offset:2px}
-
-header{padding-top:16px}
-.hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:26px 24px 22px;position:relative;overflow:hidden}
-.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
-.hero::before{width:180px;height:180px;right:-50px;top:-70px;background:#FF8A00}
-.hero::after{width:110px;height:110px;right:70px;top:-60px;background:#E5383B;mix-blend-mode:screen;opacity:.85}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;position:relative;z-index:1}
-h1{font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-.03em;margin:0;max-width:9ch}
-.sub{margin:10px 0 0;opacity:.75;font-size:.95rem;position:relative;z-index:1}
-.count{text-align:right;line-height:1}
-.count b{font-size:3.4rem;font-weight:800;letter-spacing:-.04em;color:var(--pop)}
-.count small{display:block;font-size:.9rem;opacity:.8;margin-top:4px}
-.segs{display:flex;gap:4px;height:14px;margin-top:22px;position:relative;z-index:1}
-.seg{border-radius:7px;background:color-mix(in srgb,var(--c) 30%,transparent);overflow:hidden;min-width:8px}
-.seg i{display:block;height:100%;background:var(--c);border-radius:7px;transition:width .4s cubic-bezier(.3,1.4,.5,1)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:.82rem;position:relative;z-index:1}
-.legend span{display:inline-flex;align-items:center;gap:6px;opacity:.9}
-.legend i{width:9px;height:9px;border-radius:50%;background:var(--c)}
-.legend b{font-weight:700}
-
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 0}
-nav .wrap{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-.chip{font:inherit;font-weight:700;font-size:.95rem;border:0;background:var(--surface);color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;box-shadow:inset 0 0 0 2px var(--line)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:none}
-
-main{padding-bottom:110px}
-.colhead{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin:10px 0 4px;display:flex;align-items:baseline;gap:10px}
-.colhead span{font-size:.95rem;font-weight:500;color:var(--muted)}
-.group{margin-top:18px}
-.group h3{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:700;margin:0 0 8px}
-.group h3 i{width:14px;height:14px;border-radius:5px;background:var(--c);transform:rotate(45deg)}
-.group h3 span{margin-left:auto;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);font-size:.8rem;padding:2px 9px;border-radius:999px}
-ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.item{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:18px;padding:12px 14px 12px 12px;cursor:pointer;
-  box-shadow:inset 4px 0 0 var(--c);transition:transform .25s cubic-bezier(.3,1.4,.5,1),opacity .25s ease,background .2s}
-.item:hover{background:color-mix(in srgb,var(--c) 7%,var(--surface))}
-.item input{position:absolute;opacity:0;width:1px;height:1px}
-.box{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--c);display:grid;place-items:center;color:transparent;transition:background .2s,transform .2s}
-.box svg{width:16px;height:16px}
-.item input:checked + .box{background:var(--c);color:#fff;transform:scale(1.12)}
-.item input:focus-visible + .box{outline:3px solid var(--pop);outline-offset:2px}
-.name{font-weight:700}
-.ar{display:block;font-family:var(--ar);color:var(--muted);font-size:.88rem;direction:rtl;text-align:left;unicode-bidi:plaintext}
-.qty{text-align:right;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end}
-.qty b{font-weight:800;color:var(--c)}
-.qty em{font-style:normal;color:var(--muted);font-size:.82rem}
-.item.leaving{opacity:0;transform:translateX(40px) scale(.96)}
-.empty{padding:24px;border-radius:20px;background:#2BA84A;color:#fff;font-weight:700;text-align:center;margin-top:16px}
-
-.basket-col{margin-top:26px}
-.basket{background:var(--ink);color:var(--bg);border-radius:26px;padding:20px 18px}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basket{background:#241E52;color:var(--ink)}}
-:root[data-theme="dark"] .basket{background:#241E52;color:var(--ink)}
-.basket summary{list-style:none;cursor:pointer;font-size:1.4rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px}
-.basket summary::-webkit-details-marker{display:none}
-.basket summary small{font-size:.9rem;font-weight:500;opacity:.7}
-.basket .tot{display:flex;justify-content:space-between;align-items:baseline;margin:10px 0 14px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.08)}
-.basket .tot b{font-size:1.6rem;font-weight:800;color:var(--pop)}
-.basket .tot span{opacity:.75;font-size:.9rem}
-.done ul{gap:4px}
-.done .item{background:transparent;box-shadow:none;padding:8px 4px;border-radius:12px;grid-template-columns:auto 1fr auto;gap:10px}
-.done .item:hover{background:rgba(255,255,255,.07)}
-.done .box{width:22px;height:22px;background:var(--c);border-color:var(--c);color:#fff}
-.done .box svg{width:12px;height:12px}
-.done .name{font-weight:500;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--c)}
-.done .ar,.done .qty em{color:inherit;opacity:.6}
-.done .qty b{color:inherit;font-weight:600;opacity:.85}
-.done .empty{background:rgba(255,255,255,.08);color:inherit;font-weight:500;opacity:.85}
-.data{margin-top:28px;background:var(--surface);border-radius:20px;padding:16px 18px;color:var(--muted);font-size:.93rem}
-.data summary{cursor:pointer;color:var(--ink);font-weight:700}
-.btn{font:inherit;font-weight:700;font-size:.92rem;border:0;color:var(--ink);background:var(--line);padding:9px 16px;border-radius:999px;cursor:pointer;margin:10px 8px 0 0;display:inline-block}
-.btn.solid{background:var(--hero);color:#fff}
-.status{margin-top:8px;color:var(--ink)} .status.err{color:#E5383B}
-footer.sum{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:0 12px calc(env(safe-area-inset-bottom,0px) + 10px);pointer-events:none}
-footer.sum .wrap{pointer-events:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--hero);color:#fff;border-radius:22px;padding:12px 20px;max-width:720px;box-shadow:0 12px 30px -12px rgba(42,27,122,.6)}
-footer.sum small{display:block;font-size:.78rem;opacity:.75}
-footer.sum strong{font-size:1.3rem;font-weight:800}
-footer.sum .left strong{color:var(--pop)}
-footer.sum .right{text-align:right}
-@media (min-width:900px){
-  .wrap{max-width:1120px}
-  footer.sum .wrap{max-width:560px}
-  main.wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
-  .basket-col{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);max-height:calc(100vh - env(safe-area-inset-top,0px) - 160px);overflow-y:auto;margin-top:10px;border-radius:26px}
-  .basket summary{pointer-events:none}
-  .data{grid-column:1 / -1}
-  h1{font-size:3.4rem}
-}
-@media (max-width:420px){h1{font-size:2.1rem}.count b{font-size:2.6rem}}
-@media (prefers-reduced-motion: reduce){.item,.seg i,.box{transition:none}}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="wrap">
-  <div class="hero">
-    <div class="hero-top">
-      <div><h1>Liste des courses</h1></div>
-      <div class="count" id="ring" role="progressbar" aria-label="Progression des courses" aria-valuemin="0" aria-valuemax="100"><b id="count">0</b><small>sur <span id="total">0</span> articles</small></div>
-    </div>
-    <p class="sub" id="src">Menu tunisien, 4 personnes, 14 jours</p>
-    <div class="segs" id="segs" aria-hidden="true"></div>
-    <div class="legend" id="legend"></div>
+<a class="skip" href="#view">Aller au contenu</a>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#courses"><span class="logo" aria-hidden="true"></span>Liste de courses</a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#courses" data-view="courses"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h2l2 10h10l2-7H7.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><span>Courses</span></a>
+      <a href="#acheter" data-view="acheter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6l1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg><span>À acheter</span></a>
+      <a href="#planning" data-view="planning"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Plats à préparer</span></a>
+      <a href="#plats" data-view="plats"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h18a9 9 0 0 1-18 0z"/><path d="M12 4v3M8 5.5l1 2M16 5.5l-1 2"/></svg><span>Plats</span></a>
+      <a href="#catalogues" data-view="catalogues"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/></svg><span>Catalogues</span></a>
+    </nav>
+    <button class="ghbtn" data-gh aria-label="Connexion GitHub" title="Connexion GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.9-2.4c3-.3 6.1-1.5 6.1-6.6a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C5.8 1 4.7 1.3 4.7 1.3a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 3.2 8.5c0 5.1 3.1 6.3 6.1 6.6a3 3 0 0 0-.9 2.4V21"/></svg></button>
+    <span class="sync" id="sync" role="status" aria-live="polite"></span>
   </div>
 </header>
-<nav aria-label="Filtrer la liste">
-  <div class="wrap" role="group">
-    <button class="chip" data-f="all" aria-pressed="true">Tout</button>
-    <button class="chip" data-f="food" aria-pressed="false">Alimentation</button>
-    <button class="chip" data-f="home" aria-pressed="false">Hygiène et entretien</button>
-  </div>
-</nav>
-<main class="wrap">
-  <section class="todo-col" aria-labelledby="todoH">
-    <h2 id="todoH" class="colhead">À acheter <span id="todoN"></span></h2>
-    <div id="todo"></div>
-  </section>
-  <aside class="basket-col" aria-label="Dans le panier">
-    <details class="basket done" open>
-      <summary>Dans le panier <small id="doneN"></small></summary>
-      <div class="tot"><span><span id="rcount">0</span> articles</span><b id="rtotal">0</b></div>
-      <div id="doneList"></div>
-    </details>
-  </aside>
-  <details class="data">
-    <summary>Données et fichier Excel</summary>
-    <p>La liste vient de l’onglet « Liste des courses » du fichier Excel du site (data/liste_courses_menu_tunisien.xlsx, colonne « Qté finale »). Vous pouvez aussi charger un autre fichier depuis votre appareil : il remplace celui du site sur cet appareil seulement. Les articles déjà cochés restent cochés.</p>
-    <label class="btn solid" for="file">Charger le fichier Excel</label>
-    <input type="file" id="file" accept=".xlsx,.xlsm,.xls" hidden>
-    <button class="btn" id="resetData">Revenir au fichier du site</button>
-    <button class="btn" id="uncheck">Tout décocher</button>
-    <p class="status" id="status" role="status"></p>
-  </details>
-</main>
-<footer class="sum" aria-live="polite">
-  <div class="wrap">
-    <div class="left"><small>Reste à acheter</small><strong id="left">0</strong></div>
-    <div class="right"><small>Dans le panier, <span id="pct">0 %</span></small><strong id="spent">0</strong></div>
-  </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script>
-const ORIGINAL = [{"s": "food", "c": "Viandes, poissons et œufs", "n": "Escalopes de poulet", "a": "إسكالوب دجاج (escalope djej)", "q": 1.8, "u": "kg", "p": 34.92}, {"s": "home", "c": "Hygiène corporelle", "n": "Savon de toilette", "a": "صابون (saboun)", "q": 4, "u": "pain de 100 g", "p": 7.2}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Cuisses de poulet", "a": "فخاذ دجاج (fkhadh djej)", "q": 3.1, "u": "kg", "p": 46.19}, {"s": "home", "c": "Hygiène corporelle", "n": "Savon liquide pour les mains", "a": "صابون سائل (saboun sayel)", "q": 1, "u": "flacon 1 L", "p": 8.99}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Morceaux de poulet (pilons, hauts de cuisse)", "a": "طرف دجاج (traf djej)", "q": 1.4, "u": "kg", "p": 20.86}, {"s": "home", "c": "Hygiène corporelle", "n": "Shampooing 2 en 1", "a": "شامبوان (shampoing)", "q": 2, "u": "flacon 400 ml", "p": 11.3}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Blanc de poulet", "a": "صدر دجاج (sedr djej)", "q": 0.65, "u": "kg", "p": 12.61}, {"s": "home", "c": "Hygiène corporelle", "n": "Dentifrice", "a": "معجون سنين (ma3joun snin)", "q": 2, "u": "tube 75 ml", "p": 5.98}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Poulet pour spaghetti", "a": "دجاج (djej)", "q": 1, "u": "kg", "p": 14.9}, {"s": "home", "c": "Hygiène corporelle", "n": "Brosses à dents", "a": "فرشة سنين (forchet snin)", "q": 4, "u": "pièce", "p": 6.36}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Bœuf à mijoter", "a": "لحم بقري (lham bagri)", "q": 1.3, "u": "kg", "p": 61.75}, {"s": "home", "c": "Hygiène corporelle", "n": "Papier hygiénique", "a": "كاغط توالات (kaghet twalet)", "q": 2, "u": "paquet de 12 rouleaux", "p": 17.98}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Agneau", "a": "لحم علوش (lham 3allouch)", "q": 0.4, "u": "kg", "p": 24}, {"s": "home", "c": "Hygiène corporelle", "n": "Déodorant", "a": "ديودوران (déodorant)", "q": 2, "u": "flacon 150 ml", "p": 14}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Viande hachée", "a": "لحم مرحي (lham mor7i)", "q": 0.3, "u": "kg", "p": 13.5}, {"s": "home", "c": "Hygiène corporelle", "n": "Serviettes hygiéniques (selon besoin)", "a": "فوطة صحية (fouta si77iya)", "q": 2, "u": "paquet", "p": 9}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Foie", "a": "كبدة (kebda)", "q": 0.7, "u": "kg", "p": 31.5}, {"s": "home", "c": "Hygiène corporelle", "n": "Gel antibactérien", "a": "جال معقم (gel m3aqqem)", "q": 1, "u": "flacon 125 ml", "p": 3.69}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Merguez", "a": "مرقاز (mergaz)", "q": 0.5, "u": "kg", "p": 20}, {"s": "home", "c": "Entretien de la maison", "n": "Liquide vaisselle", "a": "صابون ماعون (saboun ma3oun)", "q": 2, "u": "flacon 960 ml", "p": 13.38}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Poisson à chair ferme (mérou, loup, dorade)", "a": "حوت: مناني، قاروص، وراطة", "q": 1, "u": "kg", "p": 22}, {"s": "home", "c": "Entretien de la maison", "n": "Eau de javel", "a": "جافال (javel)", "q": 1, "u": "bidon 3 L", "p": 5.35}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Poisson blanc haché", "a": "حوت أبيض مرحي (7out abyedh mor7i)", "q": 0.6, "u": "kg", "p": 10.8}, {"s": "home", "c": "Entretien de la maison", "n": "Nettoyant sol", "a": "صابون القاعة (saboun el gaa3a)", "q": 1, "u": "bidon 3 L", "p": 6.62}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Thon en boîte (160 g)", "a": "تن (ton)", "q": 6, "u": "boîte", "p": 27}, {"s": "home", "c": "Entretien de la maison", "n": "Lessive en poudre (machine)", "a": "صابون ماكينة (saboun makina)", "q": 1, "u": "paquet", "p": 21.79}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Œufs", "a": "عظم (3dham)", "q": 55, "u": "œuf", "p": 16.5}, {"s": "home", "c": "Entretien de la maison", "n": "Éponges", "a": "سفنجة (sfenja)", "q": 4, "u": "pièce", "p": 2.76}, {"s": "food", "c": "Viandes, poissons et œufs", "n": "Fromage râpé", "a": "فرماج مرحي (fromej mra7i)", "q": 0.36, "u": "kg", "p": 10.8}, {"s": "home", "c": "Entretien de la maison", "n": "Sacs poubelle 70 L", "a": "ساشيات زبلة (sachiet zebla)", "q": 3, "u": "rouleau de 10", "p": 6.45}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Pommes de terre", "a": "بطاطا (batata)", "q": 5.7, "u": "kg", "p": 14.25}, {"s": "home", "c": "Entretien de la maison", "n": "Serviettes de table", "a": "محارم (m7arem)", "q": 1, "u": "paquet de 90", "p": 3.06}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Tomates", "a": "طماطم (tmatem)", "q": 4.65, "u": "kg", "p": 9.3}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Oignons", "a": "بصل (bsal)", "q": 2.5, "u": "kg", "p": 3}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Ail", "a": "ثوم (thoum)", "q": 0.37, "u": "kg", "p": 5.55}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Carottes", "a": "سفنارية (sfenarya)", "q": 1.5, "u": "kg", "p": 3.75}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Courgettes", "a": "قرع (gar3)", "q": 1.8, "u": "kg", "p": 3.6}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Poivrons", "a": "فلفل حلو (felfel 7lou)", "q": 1.6, "u": "kg", "p": 4}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Piments verts", "a": "فلفل أخضر (felfel akhdhar)", "q": 0.48, "u": "kg", "p": 1.2}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Piments forts", "a": "فلفل حار (felfel 7arr)", "q": 0.065, "u": "kg", "p": 0.214}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Citrouille / potiron", "a": "كابوية (kabouya)", "q": 0.9, "u": "kg", "p": 1.35}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Concombres", "a": "فقوس (fagous)", "q": 1.6, "u": "kg", "p": 4}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Laitues", "a": "خص (khass)", "q": 4, "u": "pièce", "p": 4}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Épinards (ou blettes)", "a": "سبناخ (sbenekh) / سلق (selg)", "q": 0.6, "u": "kg", "p": 2.4}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Petits pois", "a": "جلبانة (jelbana)", "q": 0.7, "u": "kg", "p": 2.38}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Céleri", "a": "كرافس (krafes)", "q": 1, "u": "botte", "p": 1}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Persil", "a": "معدنوس (ma3dnous)", "q": 5, "u": "botte", "p": 4}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Romarin ou thym", "a": "إكليل (iklil) / زعتر (za3tar)", "q": 1, "u": "botte", "p": 1}, {"s": "food", "c": "Légumes, herbes et fruits", "n": "Citrons", "a": "قارص (gares)", "q": 1.5, "u": "kg", "p": 4.5}, {"s": "food", "c": "Fruits (1 portion par personne et par jour)", "n": "Pommes", "a": "تفاح (teffe7)", "q": 3, "u": "kg", "p": 11.97}, {"s": "food", "c": "Fruits (1 portion par personne et par jour)", "n": "Grenades", "a": "رمان (rommen)", "q": 2, "u": "kg", "p": 7.98}, {"s": "food", "c": "Fruits (1 portion par personne et par jour)", "n": "Raisin", "a": "عنب (3neb)", "q": 2, "u": "kg", "p": 9.8}, {"s": "food", "c": "Fruits (1 portion par personne et par jour)", "n": "Bananes", "a": "بنان (banan)", "q": 2, "u": "kg", "p": 14}, {"s": "food", "c": "Fruits (1 portion par personne et par jour)", "n": "Dattes (Deglet Nour, branchées)", "a": "دقلة (deglet nour)", "q": 1, "u": "kg", "p": 5.17}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Couscous moyen", "a": "كسكسي (kosksi)", "q": 1, "u": "kg", "p": 3}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Spaghetti", "a": "مقرونة سباقتي (makrouna spaghetti)", "q": 0.8, "u": "kg", "p": 2.48}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Riz (ou bulgur)", "a": "روز (rouz) / برغل (borghol)", "q": 0.65, "u": "kg", "p": 3.25}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Pâtes d'orge (châer)", "a": "شعير (ch3ir)", "q": 0.3, "u": "kg", "p": 0.99}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "M'hamsa", "a": "محمصة (m7amsa)", "q": 0.25, "u": "kg", "p": 1.5}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Frik", "a": "فريك (frik)", "q": 0.15, "u": "kg", "p": 1.5}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Langues d'oiseaux", "a": "لسان عصفور (lsan 3asfour)", "q": 0.12, "u": "kg", "p": 0.48}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Pois chiches secs", "a": "حمص (7ommos)", "q": 0.35, "u": "kg", "p": 2.1}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Haricots blancs secs", "a": "لوبيا (loubya)", "q": 0.3, "u": "kg", "p": 1.8}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Feuilles de malsouka", "a": "ملسوقة (malsouka)", "q": 2, "u": "paquet", "p": 3}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Farine ou semoule fine", "a": "فارينة (farina) / سميد رقيق (smid rgig)", "q": 0.5, "u": "kg", "p": 0.6}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Levure boulangère", "a": "خميرة (khmira)", "q": 1, "u": "sachet", "p": 0.3}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Chapelure", "a": "شابلور (chapelure)", "q": 0.06, "u": "kg", "p": 0.48}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Pain (baguettes ou tabouna)", "a": "خبز باقات / طابونة", "q": 4, "u": "baguette", "p": 0.8}, {"s": "food", "c": "Féculents, pâtes et légumes secs", "n": "Poudre de mloukhia", "a": "ملوخية (mloukhia)", "q": 0.1, "u": "kg", "p": 4}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Huile d'olive", "a": "زيت زيتون (zit zitoun)", "q": 2.27, "u": "L", "p": 28.375}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Huile de friture", "a": "زيت نباتي (zit nabeti)", "q": 3.2, "u": "L", "p": 19.2}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Concentré de tomate", "a": "طماطم معجون (tmatem m3ajna)", "q": 0.6, "u": "kg", "p": 5.4}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Harissa", "a": "هريسة (harissa)", "q": 0.173, "u": "kg", "p": 1.903}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Tabel (ou tabel-karwiya)", "a": "تابل (tabel)", "q": 0.046, "u": "kg", "p": 1.518}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Curcuma", "a": "عقدة صفراء (3agda safra)", "q": 0.03, "u": "kg", "p": 1.2}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Piment doux / paprika", "a": "فلفل زينة (felfel zina)", "q": 0.023, "u": "kg", "p": 0.92}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Carvi", "a": "كروية (karwiya)", "q": 0.018, "u": "kg", "p": 0.72}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Menthe séchée", "a": "نعناع شايح (na3na3 cheye7)", "q": 0.007, "u": "kg", "p": 0.35}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Cumin", "a": "كمون (kammoun)", "q": 0.006, "u": "kg", "p": 0.3}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Laurier", "a": "ورق رند (wra9 rand)", "q": 1, "u": "forfait", "p": 0.2}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Câpres (facultatif)", "a": "كبار (kabbar)", "q": 0.01, "u": "kg", "p": 0.3}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Sel", "a": "ملح (mel7)", "q": 0.252, "u": "kg", "p": 0.202}, {"s": "food", "c": "Huiles, condiments et épices", "n": "Poivre noir", "a": "فلفل أكحل (felfel ak7el)", "q": 0.03, "u": "kg", "p": 1.5}];
-const CAT_ORDER = ["Viandes, poissons et œufs","Légumes, herbes et fruits","Fruits (1 portion par personne et par jour)","Féculents, pâtes et légumes secs","Huiles, condiments et épices","Autres ingrédients (à compléter pour un nouveau plat)","Hygiène corporelle","Entretien de la maison","Autres produits (à compléter)"];
-const CAT_LABEL = {"Légumes, herbes et fruits":"Légumes et herbes","Fruits (1 portion par personne et par jour)":"Fruits","Autres ingrédients (à compléter pour un nouveau plat)":"Autres ingrédients","Autres produits (à compléter)":"Autres produits"};
-const CAT_COLOR={"Viandes, poissons et œufs":"#E5383B","Légumes, herbes et fruits":"#2BA84A","Fruits (1 portion par personne et par jour)":"#FF8A00","Féculents, pâtes et légumes secs":"#F2B705","Huiles, condiments et épices":"#C2185B","Autres ingrédients (à compléter pour un nouveau plat)":"#7D8597","Hygiène corporelle":"#00A6D6","Entretien de la maison":"#6A4CFF","Autres produits (à compléter)":"#7D8597"};
-const colorOf=c=>CAT_COLOR[c]||"#7D8597";
-const K_DATA="courses-data-v1", K_DONE="courses-done-v1", K_SRC="courses-src-v1";
-const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
-let items, done, filter="all";
-try{ items=JSON.parse(store.get(K_DATA)||"null") }catch(e){ items=null }
-if(!Array.isArray(items)) items=ORIGINAL;
-try{ done=new Set(JSON.parse(store.get(K_DONE)||"[]")) }catch(e){ done=new Set() }
-const srcSaved=store.get(K_SRC); if(srcSaved) document.getElementById("src").textContent=srcSaved;
-
-const nf=new Intl.NumberFormat("fr-FR",{maximumFractionDigits:2});
-const money=v=>new Intl.NumberFormat("fr-FR",{minimumFractionDigits:3,maximumFractionDigits:3}).format(v)+" DT";
-const key=it=>it.s+"|"+it.n;
-function plural(u,q){ if(q<=1||/[sx]$/.test(u)) return u; return u.split(" ").map((w,i)=>i===0?w+"s":w).join(" ") }
-function fmtQty(it){
-  const q=+it.q, u=it.u||"";
-  if(it.s==="home") return {main:nf.format(q)+" ×", sub:u};
-  if(u==="kg") return q<1?{main:nf.format(Math.round(q*1000))+" g"}:{main:nf.format(q)+" kg"};
-  if(u==="L") return q<1?{main:nf.format(Math.round(q*1000))+" ml"}:{main:nf.format(q)+" L"};
-  return {main:nf.format(q)+" "+plural(u,q)};
-}
-const check='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-function row(it){
-  const k=key(it), q=fmtQty(it), isDone=done.has(k);
-  return `<li class="item" data-k="${esc(k)}" style="--c:${colorOf(it.c)}"><label style="display:contents"><input type="checkbox" ${isDone?"checked":""} aria-label="${esc(it.n)}"><span class="box">${check}</span>
-  <span><span class="name">${esc(it.n)}</span>${it.a?`<span class="ar">${esc(it.a)}</span>`:""}</span>
-  <span class="qty"><b>${esc(q.main)}</b>${q.sub?`<em>${esc(q.sub)}</em>`:""}<em class="price">${money(+it.p||0)}</em></span></label></li>`;
-}
-function render(){
-  const vis=items.filter(it=>filter==="all"||it.s===filter);
-  const todo=vis.filter(it=>!done.has(key(it))), dn=vis.filter(it=>done.has(key(it)));
-  const cats=[...new Set(todo.map(i=>i.c))].sort((a,b)=>(CAT_ORDER.indexOf(a)+99)%999-(CAT_ORDER.indexOf(b)+99)%999);
-  document.getElementById("todo").innerHTML = todo.length? cats.map(c=>{const list=todo.filter(i=>i.c===c);return `<div class="group" style="--c:${colorOf(c)}"><h3><i></i>${esc(CAT_LABEL[c]||c)}<span>${list.length}</span></h3><ul>${list.map(row).join("")}</ul></div>`}).join("") : `<p class="empty">Tout est dans le panier. Les courses sont terminées.</p>`;
-  document.getElementById("doneList").innerHTML = dn.length? `<ul>${dn.map(row).join("")}</ul>` : `<p class="empty">Cochez un article pour le mettre ici.</p>`;
-  document.getElementById("todoN").textContent=todo.length+" article"+(todo.length>1?"s":"");
-  document.getElementById("doneN").textContent=dn.length+" article"+(dn.length>1?"s":"");
-  const all=items, d=all.filter(i=>done.has(key(i)));
-  const spent=d.reduce((s,i)=>s+(+i.p||0),0), total=all.reduce((s,i)=>s+(+i.p||0),0);
-  document.getElementById("count").textContent=d.length;
-  document.getElementById("total").textContent=all.length;
-  const pct=all.length?Math.round(d.length/all.length*100):0;
-  
-  document.getElementById("pct").textContent=pct+" %";
-  document.getElementById("ring").setAttribute("aria-valuenow",pct);
-  document.getElementById("rcount").textContent=d.length;
-  const allCats=[...new Set(all.map(i=>i.c))].sort((a,b)=>(CAT_ORDER.indexOf(a)+99)%999-(CAT_ORDER.indexOf(b)+99)%999);
-  document.getElementById("segs").innerHTML=allCats.map(c=>{const t=all.filter(i=>i.c===c),dd=t.filter(i=>done.has(key(i))).length;return `<span class="seg" style="--c:${colorOf(c)};flex:${t.length}" title="${esc(CAT_LABEL[c]||c)} : ${dd} sur ${t.length}"><i style="width:${Math.round(dd/t.length*100)}%"></i></span>`}).join("");
-  document.getElementById("legend").innerHTML=allCats.map(c=>{const t=all.filter(i=>i.c===c),dd=t.filter(i=>done.has(key(i))).length;return `<span style="--c:${colorOf(c)}"><i></i>${esc(CAT_LABEL[c]||c)} <b>${dd}/${t.length}</b></span>`}).join("");
-  document.getElementById("rtotal").textContent=money(spent);
-  document.getElementById("spent").textContent=money(spent); document.getElementById("left").textContent=money(total-spent);
-}
-const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-document.addEventListener("change",e=>{
-  if(!e.target.matches(".item input")) return;
-  const li=e.target.closest(".item"), k=li.dataset.k;
-  e.target.checked?done.add(k):done.delete(k);
-  store.set(K_DONE,JSON.stringify([...done]));
-  if(reduce){render();return}
-  li.classList.add("leaving"); setTimeout(render,240);
-});
-document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
-  filter=b.dataset.f; document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b)); render();
-}));
-const status=document.getElementById("status");
-function say(t,err){status.textContent=t;status.classList.toggle("err",!!err)}
-document.getElementById("uncheck").addEventListener("click",()=>{done.clear();store.set(K_DONE,"[]");render();say("Tous les articles sont de nouveau à acheter.")});
-document.getElementById("resetData").addEventListener("click",async()=>{items=ORIGINAL;store.del(K_DATA);store.del(K_SRC);document.getElementById("src").textContent=DEFAULT_SRC;render();const ok=await loadFromRepo();say(ok?"Liste rechargée depuis le fichier Excel du site.":"Liste d’origine rétablie.")});
-function parseWorkbook(wb){
-  const need=["Liste des courses","Liste des ingrédients","Hygiène & entretien"].filter(n=>!wb.Sheets[n]);
-  if(need.length) throw new Error("Onglet introuvable : « "+need.join(" », « ")+" ». Chargez le fichier de la liste des courses.");
-  const rows=n=>XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,raw:true,defval:""});
-  const lc=rows("Liste des courses"), li=rows("Liste des ingrédients"), hy=rows("Hygiène & entretien");
-  const cat={}; li.slice(4).forEach(r=>{if(r[1]) cat[r[1]]=r[0]});
-  const hcat={}; hy.slice(4).forEach(r=>{if(r[1]) hcat[r[1]]=r[0]});
-  const out=[];
-  lc.slice(8).forEach(r=>{
-    if(r[1]&&+r[7]>0) out.push({s:"food",c:cat[r[1]]||"Autres",n:r[1],a:r[2]||"",q:+r[7],u:r[8]||"",p:+r[10]||0});
-    if(r[14]&&+r[19]>0) out.push({s:"home",c:hcat[r[14]]||"Autres",n:r[14],a:r[15]||"",q:+r[19],u:r[16]||"",p:+r[21]||0});
-  });
-  if(!out.length) throw new Error("Aucune quantité trouvée. Ouvrez le fichier dans Excel, enregistrez-le, puis réessayez.");
-  return out;
-}
-const REPO_FILE="data/liste_courses_menu_tunisien.xlsx";
-const DEFAULT_SRC="Menu tunisien, 4 personnes, 14 jours";
-async function loadFromRepo(){
-  if(typeof XLSX==="undefined") return false;
-  try{
-    const res=await fetch(REPO_FILE+"?v="+Date.now(),{cache:"no-store"});
-    if(!res.ok) return false;
-    const out=parseWorkbook(XLSX.read(await res.arrayBuffer(),{type:"array"}));
-    items=out; document.getElementById("src").textContent=DEFAULT_SRC+" (fichier du site)";
-    render(); return true;
-  }catch(err){ console.warn("Lecture du fichier du site impossible :",err); return false }
-}
-document.getElementById("file").addEventListener("change",async e=>{
-  const f=e.target.files[0]; if(!f) return;
-  if(typeof XLSX==="undefined"){say("Le lecteur Excel n’a pas pu se charger. Vérifiez la connexion et réessayez.",true);return}
-  try{
-    const out=parseWorkbook(XLSX.read(await f.arrayBuffer(),{type:"array"}));
-    items=out; store.set(K_DATA,JSON.stringify(out));
-    const d=new Date(), label="Fichier « "+f.name+" », chargé le "+d.toLocaleDateString("fr-FR")+" à "+d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
-    store.set(K_SRC,label); document.getElementById("src").textContent=label;
-    render(); say(out.length+" articles chargés depuis le fichier.");
-  }catch(err){ say(err.message||"Le fichier n’a pas pu être lu.",true) }
-  e.target.value="";
-});
-render();
-if(!store.get(K_DATA)) loadFromRepo();
-</script>
+<div class="banner" id="banner" hidden></div>
+<main id="view" class="wrap" tabindex="-1"><p class="loading">Chargement des données…</p></main>
+<dialog id="dlg" aria-labelledby="dlgTitle"><form method="dialog" id="dlgForm" novalidate></form></dialog>
+<div class="toast" id="toast" role="alert"></div>
+<script src="core.js"></script>
+<script src="store.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

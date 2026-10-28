@@ -1,48 +1,48 @@
-# Liste des courses – Menu tunisien 14 jours
+# Liste de courses – sur GitHub Pages, données dans le dépôt
 
-Une page web pour faire les courses au marché : chaque article se coche, et passe de « À acheter » à « Dans le panier ».
-La liste est lue directement dans le fichier Excel `data/liste_courses_menu_tunisien.xlsx`.
+L’application tourne entièrement sur **GitHub Pages**, sans serveur. Toutes les données sont dans **un fichier JSON** du dépôt : `data.json`, sur une branche à part nommée **`data`**. Aucune base de données.
+
+- Chaque lecture relit `data.json` sur GitHub.
+- Chaque création, modification ou suppression relit le fichier, applique le changement et l’enregistre aussitôt par **un commit** (par exemple « Ajout : plat « Riz au safran » »).
+- L’historique complet des modifications se voit dans les commits de la branche `data`.
+- Si deux personnes enregistrent en même temps, GitHub le détecte et l’application recommence avec la dernière version : aucune modification n’est perdue.
 
 ## Contenu
 
 | Fichier | Rôle |
 | --- | --- |
-| `index.html` | La page (tout le code est dans ce fichier) |
-| `data/liste_courses_menu_tunisien.xlsx` | Le fichier Excel source : plats, ingrédients, prix, hygiène, liste des courses |
-| `favicon.svg` | L’icône du site |
-| `.github/workflows/pages.yml` | Déploiement automatique sur GitHub Pages à chaque modification |
-| `.nojekyll` | Indique à GitHub Pages de publier les fichiers tels quels |
+| `index.html`, `styles.css`, `app.js` | L’interface (5 onglets : Courses, À acheter, Plats à préparer, Plats, Catalogues) |
+| `core.js` | Les règles métier (catalogues, plats, génération, blocage des suppressions) |
+| `store.js` | La lecture et l’écriture de `data.json` sur GitHub |
+| `seed.json` | Les données de départ (menu tunisien 14 jours), copiées dans `data.json` au premier usage |
+| `test/` | Tests automatiques avec un faux GitHub : `node test/run.js` |
+| `.github/workflows/pages.yml` | Lance les tests puis déploie le site à chaque modification de `main` |
 
-## Mise en ligne (une seule fois)
+## Mise en ligne
 
-1. Créez un dépôt sur GitHub, par exemple `liste-des-courses` (public, ou privé avec un compte GitHub Pro).
-2. Envoyez-y tous les fichiers de ce dossier, **y compris** les dossiers `.github` et `data` :
-   - en ligne : « Add file » puis « Upload files », et glissez le contenu du dossier ;
-   - ou en ligne de commande :
-     ```bash
-     git init
-     git add .
-     git commit -m "Liste des courses"
-     git branch -M main
-     git remote add origin https://github.com/VOTRE-NOM/liste-des-courses.git
-     git push -u origin main
-     ```
-3. Dans le dépôt, ouvrez **Settings → Pages**, et dans « Build and deployment », choisissez **Source : GitHub Actions**.
-4. Ouvrez l’onglet **Actions** : le déploiement se lance. Quand il est vert, le site est en ligne à l’adresse
-   `https://VOTRE-NOM.github.io/liste-des-courses/`.
+1. **Le dépôt.** Utilisez votre dépôt `liste-des-courses` (remplacez son contenu sur `main` par ce dossier) ou créez-en un nouveau. Envoyez tous les fichiers, y compris `.github` et `.nojekyll`.
+2. **Pages.** Dans **Settings → Pages**, choisissez **Source : GitHub Actions**. Attendez que le workflow soit vert dans l’onglet **Actions**.
+3. **Le jeton.** Créez un jeton sur https://github.com/settings/personal-access-tokens/new :
+   - *Repository access* : **Only select repositories**, puis votre dépôt ;
+   - *Permissions → Repository permissions → Contents* : **Read and write** ;
+   - une date d’expiration (par exemple 1 an).
+4. **Connexion.** Ouvrez le site (`https://VOTRE-NOM.github.io/liste-des-courses/`), cliquez sur le bouton **GitHub** en haut, collez le jeton, puis **Tester et enregistrer**. Au premier usage, l’application crée la branche `data` et le fichier `data.json` à partir de `seed.json`.
 
-## Mettre la liste à jour
-
-1. Ouvrez `data/liste_courses_menu_tunisien.xlsx` dans Excel et modifiez ce que vous voulez (plats « Oui / Non », quantités manuelles, prix, articles d’hygiène…).
-2. **Enregistrez dans Excel** : la page lit les valeurs calculées, que seul l’enregistrement dans Excel (ou LibreOffice) met à jour.
-3. Remplacez le fichier dans le dossier `data/` du dépôt, sans changer son nom (« Add file → Upload files » sur GitHub, ou `git commit` puis `git push`).
-4. Le site se met à jour en une à deux minutes.
-
-Sur la page, le bouton « Charger le fichier Excel » permet aussi de tester un autre fichier sur un seul appareil, sans le publier.
+Faites l’étape 4 sur chaque téléphone ou ordinateur qui doit pouvoir modifier. Le jeton reste enregistré **sur l’appareil uniquement** ; « Oublier le jeton » l’efface.
 
 ## Bon à savoir
 
-- Les cases cochées sont enregistrées dans le navigateur de chaque appareil : deux téléphones ne partagent pas leurs coches.
-- La page a besoin d’Internet au premier chargement (polices Google Fonts et lecteur Excel SheetJS depuis cdnjs).
-- Si le fichier Excel ne peut pas être lu, la page affiche la liste intégrée (celle du 26 octobre 2026).
-- Pour tester en local, ouvrez le dossier avec un petit serveur (`python -m http.server`) puis `http://localhost:8000` : en ouvrant `index.html` directement, le navigateur bloque la lecture du fichier Excel et la liste intégrée s’affiche.
+- **Sans jeton**, l’application est en **lecture seule** : on peut consulter la liste, mais pas cocher ni modifier.
+- **Dépôt public = données publiques.** Dans un dépôt public, tout le monde peut lire `data.json` (listes, prix). Rien de personnel n’y est stocké, mais si vous préférez, rendez le dépôt privé : GitHub Pages sur un dépôt privé demande un compte payant.
+- **Ne partagez jamais votre jeton** et ne le mettez pas dans un fichier du dépôt. En cas de doute, supprimez-le sur GitHub et créez-en un autre.
+- Chaque enregistrement prend une à deux secondes (lecture puis commit). GitHub autorise 5 000 requêtes par heure avec un jeton, largement assez.
+- **Sauvegarde et retour en arrière :** chaque version de `data.json` est dans l’historique de la branche `data`. Pour revenir en arrière, ouvrez une ancienne version sur GitHub, copiez-la et enregistrez-la à la place de l’actuelle.
+- Les réglages avancés (branche et nom du fichier) sont dans la fenêtre **Connexion GitHub**.
+
+## Tests
+
+```bash
+node test/run.js
+```
+
+Ils vérifient les règles métier et l’enregistrement sur un faux GitHub : création de la branche et du fichier, lecture seule sans jeton, jeton invalide, messages de commit, blocage des suppressions, génération des quantités, et deux appareils qui enregistrent en même temps.
