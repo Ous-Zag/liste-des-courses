@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-28T13:34:17.223Z",
+ "updatedAt": "2026-10-28T13:34:24.787Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -3008,7 +3008,7 @@
    "id": "ha-16",
    "hygieneId": "hyg-16",
    "qty": 1,
-   "checked": false
+   "checked": true
   }
  ]
 }
