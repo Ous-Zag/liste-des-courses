@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-29T16:17:29.981Z",
+ "updatedAt": "2026-10-29T16:20:28.628Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -3017,7 +3017,7 @@
    "source": "ingredients",
    "refId": "ing-1",
    "qty": 1800,
-   "checked": false
+   "checked": true
   },
   {
    "id": "lc-0baaa155",
