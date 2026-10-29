@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-29T16:08:19.379Z",
+ "updatedAt": "2026-10-29T16:17:29.981Z",
  "ingredients": [
   {
    "id": "ing-1",
@@ -128,7 +128,7 @@
    "unit": "g",
    "category": "Légumes et herbes",
    "ar": "بطاطا (batata)",
-   "price": 2.5
+   "price": 1.5
   },
   {
    "id": "ing-17",
